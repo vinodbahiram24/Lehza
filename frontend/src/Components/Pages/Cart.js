@@ -75,7 +75,7 @@ export default function Cart(props) {
         <Navbar toggleMode={props.toggleMode} mode={props.mode} />
       </div>
       <div className="container">
-        <h2 style={{ paddingTop: "3rem" }}>Shopping Cart</h2>
+        <center><h2 style={{ paddingTop: "3rem" }}>Shopping Cart</h2></center>
       </div>
       <hr />
       {/* body */}

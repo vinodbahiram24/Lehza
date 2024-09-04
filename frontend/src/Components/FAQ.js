@@ -163,7 +163,7 @@ export default function FAQ(props) {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body">
-            You can reach our customer support team via email at <a href="mailto:support@lehza.in" target='_blank' rel="noreferrer"> support@lehza.in</a> or by phone at +91-XXXXXXXXXX. Our support team is available Monday to Saturday, from 10 AM to 7 PM IST.
+            You can reach our customer support team via email at <a href="mailto:support@lehza.in" target='_blank' rel="noreferrer"> support@lehza.in</a> or by phone at +917057338366. Our support team is available Monday to Saturday, from 10 AM to 7 PM IST.
             </div>
           </div>
         </div>

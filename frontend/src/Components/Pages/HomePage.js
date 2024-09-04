@@ -35,7 +35,7 @@ export default function HomePage(props) {
       </div>
 
       <div className="container py-5">
-        <h4 className="text-center">—— FAQS ——</h4>
+        <center><h4>—— FAQS ——</h4></center>
         <FAQ mode={props.mode} />
       </div>
       <Footer></Footer>

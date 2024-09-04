@@ -17,7 +17,6 @@ export default function Checkout(props) {
     useEffect(()=>{
         const fetchUser = async ()=>{
             const response = await axios.get(`http://localhost:8080/users/getUserByUsername/${localStorage.getItem("username")}`);
-            console.log(response.data);
             setUser(response.data);
         }
         fetchUser();
@@ -25,9 +24,17 @@ export default function Checkout(props) {
 
     const updateAddress = async (e) =>{
       e.preventDefault();
-      const response = await axios.put(`http://localhost:8080/users/updateUser/3`, {address: address, city: city, pincode: pincode, state: state});
+      const response = await axios.put(`http://localhost:8080/users/updateUser/3`, {address: address, city: city, pincode: parseInt(pincode) , state: state});
       console.log(response.data);
       setUser(response.data);
+
+      setAddress("");
+      setCity("");
+      setPincode("");
+      setState("");
+
+      window.alert("Address Updated..!")
+
     }
 
   return (
@@ -48,10 +55,10 @@ export default function Checkout(props) {
             <div className="addressForm py-2 px-5">
             <center><h5>or update address</h5></center>
             <form className="text-center" onSubmit={updateAddress}>
-                <input type="text" placeholder="address" style={{width:'45rem',borderRadius:10}} onChange={(e)=>setAddress(e.target.value)}></input>
-                <input type="text" placeholder="city" style={{width:'45rem',borderRadius:10}} onChange={(e)=>setCity(e.target.value)}></input>
-                <input type="text" placeholder="pincode" style={{width:'45rem',borderRadius:10}} onChange={(e)=>setPincode(e.target.value)}></input>
-                <input type="text" placeholder="state" style={{width:'45rem',borderRadius:10}} onChange={(e)=>setState(e.target.value)}></input>
+                <input type="text" placeholder="address" value={address} style={{width:'45rem',borderRadius:10}} onChange={(e)=>setAddress(e.target.value)} required></input>
+                <input type="text" placeholder="city" value={city} style={{width:'45rem',borderRadius:10}} onChange={(e)=>setCity(e.target.value)} required></input>
+                <input type="text" placeholder="pincode" value={pincode} style={{width:'45rem',borderRadius:10}} onChange={(e)=>setPincode(e.target.value)} required></input>
+                <input type="text" placeholder="state" value={state} style={{width:'45rem',borderRadius:10}} onChange={(e)=>setState(e.target.value)} required></input>
                 <button type="submit" className="btn btn-success">Update</button>
             </form>
 

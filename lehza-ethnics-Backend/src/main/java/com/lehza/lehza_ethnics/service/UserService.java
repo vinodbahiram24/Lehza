@@ -16,7 +16,7 @@ public interface UserService {
 	String authUser(Users user);
 	
 	//Put
-	String updateUserById(UsersDto userDto, Integer id);
+	UsersDto updateUserById(UsersDto userDto, Integer id);
 	
 	//Delete
 	String deleteUserById(Integer id);

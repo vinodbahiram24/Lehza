@@ -85,41 +85,41 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public String updateUserById(UsersDto usersDto, Integer id) 
+	public UsersDto updateUserById(UsersDto usersDto, Integer id) 
 	{
 		UsersDto existingUser = userMapper.usersToDto(userRepo.getById(id));
 	
-		if (usersDto.getAddress() != null) {
+		if (usersDto.getAddress() != null && !usersDto.getAddress().equals("") ) {
 	        existingUser.setAddress(usersDto.getAddress());
 	    }
-	    if (usersDto.getCity() != null) {
+	    if (usersDto.getCity() != null && !usersDto.getCity().equals("")) {
 	        existingUser.setCity(usersDto.getCity());
 	    }
-	    if (usersDto.getEmail() != null) {
+	    if (usersDto.getEmail() != null && !usersDto.getEmail().equals("")) {
 	        existingUser.setEmail(usersDto.getEmail());
 	    }
-	    if (usersDto.getMobile() != null) {
+	    if (usersDto.getMobile() != null && !usersDto.getMobile().equals("")) {
 	        existingUser.setMobile(usersDto.getMobile());
 	    }
-	    if (usersDto.getPincode() != null) {
+	    if (usersDto.getPincode() != null && !usersDto.getPincode().equals("")) {
 	        existingUser.setPincode(usersDto.getPincode());
 	    }
-	    if (usersDto.getState() != null) {
+	    if (usersDto.getState() != null && !usersDto.getState().equals("")) {
 	        existingUser.setState(usersDto.getState());
 	    }
-	    if (usersDto.getUsername() != null) {
+	    if (usersDto.getUsername() != null && !usersDto.getAddress().equals("")) {
 	        existingUser.setUsername(usersDto.getUsername());
 	    }
 	    if (usersDto.getRole() != null) {
 	        existingUser.setRole(usersDto.getRole());
 	    }
-	    if (usersDto.getPassword() != null) {
+	    if (usersDto.getPassword() != null && !usersDto.getPassword().equals("")) {
 	        existingUser.setPassword(passwordEncoder.encode(existingUser.getPassword()));
 	    }
 	    
-		userRepo.save(userMapper.dtoToUsers(existingUser));
+		Users savedUser = userRepo.save(userMapper.dtoToUsers(existingUser));
 		
-		return "User Updated Successfully ..!";
+		return userMapper.usersToDto(savedUser);
 	}
 
 	@Override
