@@ -1,0 +1,14 @@
+
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8èøÌ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
+„
+java:S39737"IUse indentation to denote the code conditionally executed by this "else".8½ºœ°—2b 2954e92a9b4d0e998fe4893f8141649ah
+w
+java:S49735"<Strings and Boxed types should be compared using "equals()".8½ºœ°—2b 2063849717d32dd19e534b77cabac517h
+‹	java:S117!"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.8é¨†Ë–2b f6039d44b29456b20f8f373155ae4973h
+‚
+java:S39735"GUse indentation to denote the code conditionally executed by this "if".8½ºœ°—2b b68816740ad1a76cb1e4c7c7bb64e0dah
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8é¨†Ë–2b 0132ec8cee01c5dd244e1a60fe6448a1h
+a
+java:S1452'"&Remove usage of generic wildcard type.8ª“²›—2b d1457b72c3fb323a2671125aef3eab5dh

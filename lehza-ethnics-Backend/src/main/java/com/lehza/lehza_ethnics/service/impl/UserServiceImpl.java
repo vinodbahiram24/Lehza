@@ -1,0 +1,147 @@
+package com.lehza.lehza_ethnics.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.lehza.lehza_ethnics.dto.UsersDto;
+import com.lehza.lehza_ethnics.entities.Users;
+import com.lehza.lehza_ethnics.mapper.UsersMapper;
+import com.lehza.lehza_ethnics.repository.UsersRepository;
+import com.lehza.lehza_ethnics.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService{
+	
+	@Autowired
+	private UsersRepository userRepo;
+	
+	@Autowired
+	private UsersMapper userMapper;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+
+	@Override
+	public Users getUserByUsername(String Username) 
+	{
+		
+		try {
+			Users user = userRepo.getUserByUsername(Username);
+			return user ;
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+
+	@Override
+	public String createUser(UsersDto userDto) 
+	{
+		if(userDto.getUsername() != null && !userDto.getUsername().isEmpty() &&
+				   userDto.getEmail() != null && !userDto.getEmail().isEmpty() &&
+				   userDto.getMobile() != null && !userDto.getMobile().isEmpty() &&
+				   userDto.getPassword() != null && !userDto.getPassword().isEmpty()) 
+		{
+			Users user = userMapper.dtoToUsers(userDto);
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
+			try {
+				userRepo.save(user);
+				return "User Created Successfully..!";
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "Failed to Create User..!";
+			}
+		}
+		
+		return "All fields are Mandatory!";
+		
+				
+	}
+	
+	@Override
+	public String authUser(Users user)
+	{
+		try 
+		{	
+			Users existingUser = userRepo.getUserByUsername(user.getUsername());
+			if(existingUser != null && passwordEncoder.matches(user.getPassword(), existingUser.getPassword()))
+			{
+				return "AUTHORIZED";
+			}
+			else
+			{
+				return "NOT AUTHORIZED";
+			}	
+				
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+			
+	}
+
+	@Override
+	public String updateUserById(UsersDto usersDto, Integer id) 
+	{
+		UsersDto existingUser = userMapper.usersToDto(userRepo.getById(id));
+	
+		if (usersDto.getAddress() != null) {
+	        existingUser.setAddress(usersDto.getAddress());
+	    }
+	    if (usersDto.getCity() != null) {
+	        existingUser.setCity(usersDto.getCity());
+	    }
+	    if (usersDto.getEmail() != null) {
+	        existingUser.setEmail(usersDto.getEmail());
+	    }
+	    if (usersDto.getMobile() != null) {
+	        existingUser.setMobile(usersDto.getMobile());
+	    }
+	    if (usersDto.getPincode() != null) {
+	        existingUser.setPincode(usersDto.getPincode());
+	    }
+	    if (usersDto.getState() != null) {
+	        existingUser.setState(usersDto.getState());
+	    }
+	    if (usersDto.getUsername() != null) {
+	        existingUser.setUsername(usersDto.getUsername());
+	    }
+	    if (usersDto.getRole() != null) {
+	        existingUser.setRole(usersDto.getRole());
+	    }
+	    if (usersDto.getPassword() != null) {
+	        existingUser.setPassword(passwordEncoder.encode(existingUser.getPassword()));
+	    }
+	    
+		userRepo.save(userMapper.dtoToUsers(existingUser));
+		
+		return "User Updated Successfully ..!";
+	}
+
+	@Override
+	public String deleteUserById(Integer id) 
+	{
+		try {
+			userRepo.deleteById(id);
+			return "User Deleted..!";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "User Not Exists..!";
+		}
+		
+	}
+
+	@Override
+	public Users checkEmailandUsername(String email, String username) {
+
+		return userRepo.existsByEmail(email, username);
+	}
+	
+	
+
+}

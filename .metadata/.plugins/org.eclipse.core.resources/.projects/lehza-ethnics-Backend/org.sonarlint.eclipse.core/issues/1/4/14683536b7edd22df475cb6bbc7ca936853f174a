@@ -1,0 +1,10 @@
+
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8ç¸õÊ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
+‹	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.8ý“îÊ–2b f6039d44b29456b20f8f373155ae4973h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8úåëÌ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8¢‚ìÒ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
+—
+java:S1488"\Immediately return this expression instead of assigning it to the temporary variable "user".8ƒ²šË–2b 232dbcc61fce904a2a76bc70e7edd019h

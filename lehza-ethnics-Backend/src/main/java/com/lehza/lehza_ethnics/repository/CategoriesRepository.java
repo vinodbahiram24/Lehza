@@ -1,0 +1,11 @@
+package com.lehza.lehza_ethnics.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.lehza.lehza_ethnics.entities.Categories;
+
+@Repository
+public interface CategoriesRepository extends JpaRepository<Categories, Integer> {
+
+}

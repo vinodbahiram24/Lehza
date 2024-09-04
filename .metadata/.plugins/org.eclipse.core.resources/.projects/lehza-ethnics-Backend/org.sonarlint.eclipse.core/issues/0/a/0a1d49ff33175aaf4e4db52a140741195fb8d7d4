@@ -1,0 +1,12 @@
+
+œ
+java:S1488'"aImmediately return this expression instead of assigning it to the temporary variable "savedProd".8›âä•2b 4d5eb6ceed2140a299cbc282617c35b6h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8´í•Ù•2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8´í•Ù•2b 0132ec8cee01c5dd244e1a60fe6448a1h
+‹	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.8¶“Èµ–2b b583a6293fe1d5750ba17314e10419cch
+j
+java:S1128"/Remove this unused import 'java.util.Optional'.8’ü±•˜2b 36b2b47c45feb274daab2613f5282eabh
+
+java:S1128	"DRemove this unused import 'com.lehza.lehza_ethnics.dto.ProductsDto'.8’ü±•˜2b 2ef3b65a50d57b0e3a32d3c79da464d4h

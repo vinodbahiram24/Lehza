@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;lehza-ethnics&apos; to &apos;lehza-ethnics (Backend)&apos;" description="Rename resource &apos;lehza-ethnics&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/lehza-ethnics" name="lehza-ethnics (Backend)" stamp="1725439473990" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;lehza-ethnics (Backend)&apos; to &apos;lehza-ethnics&apos;" description="Rename resource &apos;lehza-ethnics (Backend)&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/lehza-ethnics (Backend)" name="lehza-ethnics" stamp="1725439545357" updateReferences="true"/>
+</session>
