@@ -2,6 +2,7 @@ package com.lehza.lehza_ethnics.entities;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
@@ -29,6 +30,7 @@ public class Orders {
 	@JsonManagedReference
 	private Products product;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yy")
 	private LocalDate date;
 	private String status;
 	private Integer quantity;

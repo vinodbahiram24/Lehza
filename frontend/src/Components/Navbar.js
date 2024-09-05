@@ -134,7 +134,7 @@ export default function Navbar(props) {
               >
                 Upcoming..
               </a>
-              <li
+              <ul
                 className="dropdown-menu"
                 style={{ backgroundColor: "#9a8100" }}
               >
@@ -156,7 +156,7 @@ export default function Navbar(props) {
                     ..
                   </a>
                 </li>
-              </li>
+              </ul>
             </li>
           </ul>
 

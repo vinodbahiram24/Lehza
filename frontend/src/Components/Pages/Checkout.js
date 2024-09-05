@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../Navbar";
 import { useEffect } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Checkout(props) {
     const [user, setUser] = useState({});
@@ -11,7 +11,8 @@ export default function Checkout(props) {
     const [pincode, setPincode] = useState('');
     const [state, setState] = useState('');
     const location = useLocation();
-    const {totalCartAmt} = location.state || {};
+    const {totalCartAmt, cartData} = location.state || {};
+    const navigate = useNavigate();
 
 
     useEffect(()=>{
@@ -37,6 +38,17 @@ export default function Checkout(props) {
 
     }
 
+    const placeOrder = async () => {
+      try {
+        const response = await axios.post(`http://localhost:8080/order/createOrder/${localStorage.getItem('username')}`);
+        const orderDetails = response.data;
+        console.log(orderDetails);
+        navigate('/OrderPlaced',{state : {orderDetails}});
+      } catch (error) {
+        console.log("Failed to create order : ", error);
+      }
+    }
+
   return (
     <>
       {/* navbar */}
@@ -59,7 +71,7 @@ export default function Checkout(props) {
                 <input type="text" placeholder="city" value={city} style={{width:'45rem',borderRadius:10}} onChange={(e)=>setCity(e.target.value)} required></input>
                 <input type="text" placeholder="pincode" value={pincode} style={{width:'45rem',borderRadius:10}} onChange={(e)=>setPincode(e.target.value)} required></input>
                 <input type="text" placeholder="state" value={state} style={{width:'45rem',borderRadius:10}} onChange={(e)=>setState(e.target.value)} required></input>
-                <button type="submit" className="btn btn-success">Update</button>
+                <button type="submit" className="btn btn-success" style={{borderRadius:20}}>Update</button>
             </form>
 
             </div>
@@ -85,7 +97,7 @@ export default function Checkout(props) {
           </div>
           
           <div style={{display:'flex',justifyContent:'center'}}>
-          <button className="btn btn-success" style={{width:'7rem'}}>Place Order</button>
+          <button className="btn btn-success" style={{width:'7rem', borderRadius:20}} onClick={()=>placeOrder()}>Place Order</button>
           </div>
             </div>
       </div>

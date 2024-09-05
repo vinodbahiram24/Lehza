@@ -55,7 +55,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<OrdersDto> createOrder(Orders order, String username)
+	public List<OrdersDto> createOrder( String username)
 	{
 		List<Cart> cartList = cartRepo.getCartByUsername(username);
 		
@@ -78,6 +78,8 @@ public class OrderServiceImpl implements OrderService {
 		List<Orders> orderList = orderListDto.stream().map((e)-> orderMapper.dtoToOrders(e)).collect(Collectors.toList());
 		
 		List<Orders> orderSuccess = orderRepo.saveAll(orderList);
+		
+		cartRepo.deleteAll();
 		
 		return orderSuccess.stream().map((e)-> orderMapper.ordersToDto(e)).collect(Collectors.toList());
 	}

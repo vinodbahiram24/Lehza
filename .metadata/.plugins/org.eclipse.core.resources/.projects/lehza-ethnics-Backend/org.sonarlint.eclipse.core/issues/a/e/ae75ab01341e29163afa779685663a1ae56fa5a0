@@ -1,5 +1,9 @@
 
 }
-java:S6813"BRemove this field injection and use constructor injection instead.8È¦Ýí˜2b 0132ec8cee01c5dd244e1a60fe6448a1h
+java:S6813"BRemove this field injection and use constructor injection instead.8……­ì˜2b 0132ec8cee01c5dd244e1a60fe6448a1h
 }
-java:S6813"BRemove this field injection and use constructor injection instead.8……­ì˜2b 0132ec8cee01c5dd244e1a60fe6448a1h
+java:S6813"BRemove this field injection and use constructor injection instead.8È¦Ýí˜2b 0132ec8cee01c5dd244e1a60fe6448a1h
+‹
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.8–È·ï›2b 56f405ddb5bc363f3774807aeb136e18h
+
+java:S1128"DRemove this unused import 'com.lehza.lehza_ethnics.entities.Orders'.8–È·ï›2b d548c5fcc9577c2d3a6ffd1eeca60eb6h

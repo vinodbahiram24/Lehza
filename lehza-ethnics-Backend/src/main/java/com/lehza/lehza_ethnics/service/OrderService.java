@@ -11,7 +11,7 @@ public interface OrderService {
 	
 	List<OrdersDto> getAllOrders();
 	
-	List<OrdersDto> createOrder(Orders order, String username);
+	List<OrdersDto> createOrder(String username);
 	
 	Orders updateOrderStatus(Integer id, String status);
 	

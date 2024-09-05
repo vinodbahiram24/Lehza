@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../css/signIn.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../Navbar";
 
 export default function SignInPage(props) {
 
