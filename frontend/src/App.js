@@ -14,6 +14,7 @@ import SignInPage from "./Components/Pages/SignInPage";
 import Cart from "./Components/Pages/Cart";
 import Checkout from "./Components/Pages/Checkout";
 import OrderPlaced from "./Components/Pages/OrderPlaced";
+import Orders from "./Components/Pages/Orders";
 
 function App() {
   const [mode, setMode] = useState(() => {
@@ -47,6 +48,7 @@ function App() {
           <Route exact path="/cart" element={<Cart mode={mode} toggleMode={toggleMode}/>} />
           <Route exact path="/Checkout" element={<Checkout mode={mode} toggleMode={toggleMode}/>}/>
           <Route exact path="/OrderPlaced" element={<OrderPlaced mode={mode} toggleMode={toggleMode}/>}/>
+          <Route exact path="/Orders" element={<Orders mode={mode} toggleMode={toggleMode}/>}/>
         </Routes>
       </div> }
     </Router>
