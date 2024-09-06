@@ -1,35 +1,35 @@
 
-}
-java:S6813"BRemove this field injection and use constructor injection instead.8‹Éìç˜2b 0132ec8cee01c5dd244e1a60fe6448a1h
-j
-java:S1611."/Remove the parentheses around the "e" parameter8ÿÔ¥º™2b 84c40473414caf2ed4a7b1283e48bbf4h
-Ÿ
-java:S1488."dImmediately return this expression instead of assigning it to the temporary variable "orderDtoList".8œÅÃ™2b 50bef135667578b2a6c7f4371c226d01h
-Ÿ
-java:S14885"dImmediately return this expression instead of assigning it to the temporary variable "orderDtoList".8¥¥ˆÃ™2b b39e3f2b99608c440d320f2cb8ce4b5eh
+
+java:S62045"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'8„ş®º™2b f31c9542f92d797a57d6f9bafca179cdh
 }
 java:S6813"BRemove this field injection and use constructor injection instead.8‹Éìç˜2b 0132ec8cee01c5dd244e1a60fe6448a1h
 
 java:S6204T"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'8¥¥ˆÃ™2b f31c9542f92d797a57d6f9bafca179cdh
+Ÿ
+java:S14885"dImmediately return this expression instead of assigning it to the temporary variable "orderDtoList".8¥¥ˆÃ™2b b39e3f2b99608c440d320f2cb8ce4b5eh
+j
+java:S1611."/Remove the parentheses around the "e" parameter8ÿÔ¥º™2b 84c40473414caf2ed4a7b1283e48bbf4h
 
 java:S6204."RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'8ÿÔ¥º™2b f31c9542f92d797a57d6f9bafca179cdh
 }
-java:S6813!"BRemove this field injection and use constructor injection instead.8åö«“™2b 0132ec8cee01c5dd244e1a60fe6448a1h
-}
 java:S6813$"BRemove this field injection and use constructor injection instead.8áØÚ¹™2b 0132ec8cee01c5dd244e1a60fe6448a1h
-
-java:S62045"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'8„ş®º™2b f31c9542f92d797a57d6f9bafca179cdh
-j
-java:S1611N"/Remove the parentheses around the "e" parameter8œÅÃ™2b 84c40473414caf2ed4a7b1283e48bbf4h
-}
-java:S6813"BRemove this field injection and use constructor injection instead.8ÕÀ¬’™2b 0132ec8cee01c5dd244e1a60fe6448a1h
 j
 java:S16115"/Remove the parentheses around the "e" parameter8„ş®º™2b 84c40473414caf2ed4a7b1283e48bbf4h
 }
 java:S6813'"BRemove this field injection and use constructor injection instead.8ÿÔ¥º™2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8ÕÀ¬’™2b 0132ec8cee01c5dd244e1a60fe6448a1h
+j
+java:S1611N"/Remove the parentheses around the "e" parameter8œÅÃ™2b 84c40473414caf2ed4a7b1283e48bbf4h
+j
+java:S1611T"/Remove the parentheses around the "e" parameter8¥¥ˆÃ™2b 84c40473414caf2ed4a7b1283e48bbf4h
+Ÿ
+java:S1488."dImmediately return this expression instead of assigning it to the temporary variable "orderDtoList".8œÅÃ™2b 50bef135667578b2a6c7f4371c226d01h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8‹Éìç˜2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813!"BRemove this field injection and use constructor injection instead.8åö«“™2b 0132ec8cee01c5dd244e1a60fe6448a1h
 
 java:S6204N"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'8œÅÃ™2b f31c9542f92d797a57d6f9bafca179cdh
 Y
 java:S2119A"Save and re-use this "Random".8°Î§“™2b 64663f4646781c9c0110838b905daa23h
-j
-java:S1611T"/Remove the parentheses around the "e" parameter8¥¥ˆÃ™2b 84c40473414caf2ed4a7b1283e48bbf4h

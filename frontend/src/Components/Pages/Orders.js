@@ -7,11 +7,7 @@ export default function Orders(props) {
   
     useEffect(() => {
       const fetchOrders = async () => {
-        const response = await axios.get(
-          `http://localhost:8080/order/getOrdersByUser/${localStorage.getItem(
-            "username"
-          )}`
-        );
+        const response = await axios.get(`http://localhost:8080/order/getOrdersByUser/${localStorage.getItem("username")}`);
         setOrders(response.data);
       };
       fetchOrders();
@@ -28,10 +24,10 @@ export default function Orders(props) {
         </div>
         <hr />
         {/* body */}
-        {Array.isArray(orders) && orders.length > 0 ? (
+        {orders.length > 0 ? (
           orders.map((item) => (
             <>
-            <div className="row py-3 px-4" key={item.orderId}>
+            <div className="row py-3 px-4" key={item.orderId} >
               <div className="col-md-3" style={{ height: "9rem", width: "9rem" }}>
                 <img className="img-fluid" src={item.product.image} alt="N/A" />
               </div>
