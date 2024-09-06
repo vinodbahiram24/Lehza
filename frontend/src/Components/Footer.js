@@ -17,8 +17,7 @@ export default function Footer() {
           <p>
             <i className="bi bi-geo-alt-fill">
               {" "}
-              41, Second Floor, Navjivan Industrial, Society, Near Unique
-              Hospital, Khatodara, Laxmi Nagar, Udhna, Surat, Gujarat 395002
+              41, Second Floor, J.M Road, Near Deccan Mall, Pune, Maharshtra 411004
             </i>
           </p>
           <p>
@@ -49,7 +48,7 @@ export default function Footer() {
           <a href="https://www.youtube.com" target='_blank' rel="noreferrer"> <i className="bi bi-youtube"> &nbsp; </i></a>
         </div>
         <hr/>
-        <strong>© 2024 LEHZA PVT LTD. All Rights Reserved.</strong>
+        <strong>© 2024 LEHZA PVT LTD.</strong>
       </div>
   )
 }

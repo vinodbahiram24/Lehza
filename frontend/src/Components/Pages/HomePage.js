@@ -1,44 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import '../css/homePage.css';
 import MainCarousel from "../MainCarousel/MainCarousel";
 import SectionCarousel from "../HomeSectionCarousel/SectionCarousel";
-import { TrendingCarouselData } from "../Data/TrendingCarouselData";
-import { BestSellerCarouselData } from "../Data/BestSellerCarouselData";
 import FAQ from "../FAQ";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
+import axios from "axios";
 
 export default function HomePage(props) {
+
+  const [ data, setData ] = useState([]);
+
+  useEffect(()=>{
+    const fetchData= async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/products/getAllProducts/sarees');
+        setData(response.data);
+      } catch (error) {
+        console.log('error in homePage fechData :', error );
+      }
+    }
+    fetchData()
+  },[])
+
   return (
     <>
+    {/* Navbar */}
     <div><Navbar toggleMode={props.toggleMode} mode={props.mode} /></div>
-      <div className="py-2">
+    {/* Body */}
+      <div className="mainCarousel">
         <MainCarousel />
       </div>
-      <div>
-        <h3 className="text-center">
+
+      <div className="trending">
+        <h3 className="trendingText">
           <b>—— TRENDING ——</b>
         </h3>
-        <p className="text-center" style={{ color: "gray" }}>
+        <p className="trendingText" style={{ color: "gray" }}>
           <i>Top view in this week</i>
         </p>
-        <SectionCarousel data={TrendingCarouselData} />
+        <SectionCarousel data={data}/>
       </div>
 
-      <div className="py-5">
-        <h3 className="text-center">
+      <div className="bestSeller">
+        <h3 className="bestSellerText">
           <b>—— BEST SELLER ——</b>
         </h3>
-        <p className="text-center" style={{ color: "gray" }}>
+        <p className="bestSellerText" style={{ color: "gray" }}>
           <i>Top sale in this week</i>
         </p>
-        <SectionCarousel data={BestSellerCarouselData} />
+        <SectionCarousel data={data} />
       </div>
 
-      <div className="container py-5">
+      <div className="faq">
         <center><h4>—— FAQS ——</h4></center>
         <FAQ mode={props.mode} />
       </div>
-      <Footer></Footer>
+
+      <Footer/>
     </>
   );
 }

@@ -16,7 +16,7 @@ public interface ProductsRepository extends JpaRepository<Products, Integer>{
 	List<Products> findByCategory(@Param("category_id") Integer category_id);
 
 	
-	@Query(value = "SELECT * FROM products JOIN categories ON products.category_id = categories.catId WHERE categories.name LIKE CONCAT('%', :category, '%');", nativeQuery = true)
+	@Query(value = "SELECT * FROM products JOIN categories ON products.category_id = categories.cat_id WHERE categories.name LIKE CONCAT('%', :category, '%');", nativeQuery = true)
 	List<Products> findAllByCategory(@Param("category") String category);
 	
 	@Query(value= "SELECT * FROM Products WHERE prod_id = :id", nativeQuery = true)

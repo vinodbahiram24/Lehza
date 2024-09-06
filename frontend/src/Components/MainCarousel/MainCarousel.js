@@ -12,7 +12,7 @@ const items = MainCarouselData.map((item)=> <img className='img-fluid' role='pre
         autoPlay
         autoPlayInterval={1500}
         animationDuration={1500}
-        animationType="fadeout"
+        animationType="slide"
         infinite
         //disableDotsControls
         disableButtonsControls

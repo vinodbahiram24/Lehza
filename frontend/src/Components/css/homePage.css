@@ -1,0 +1,24 @@
+.mainCarousel{
+    padding-top: 5px;
+}
+
+.trending {
+    padding: 3rem;
+}
+
+.trendingText {
+    text-align: center;
+}
+
+.bestSeller {
+    padding: 3rem;
+}
+
+.bestSellerText {
+    text-align: center;
+}
+
+.faq {
+    padding: 3rem;
+    position: relative;
+}

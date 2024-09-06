@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../Footer";
-import { BestSellerCarouselData } from "../Data/BestSellerCarouselData";
 import SectionCarousel from "../HomeSectionCarousel/SectionCarousel";
 import Navbar from "../Navbar";
 import axios from "axios";
@@ -9,6 +8,15 @@ import axios from "axios";
 export default function ItemDetailsPage(props) {
   const { id, title, price, image, brand, username} = useParams();
   const [itemQty, setItemQty] = useState(0);
+  const [data, setData] = useState([]);
+
+  useEffect(()=>{
+    const fetchData= async() =>{
+      const fetchedData = await axios.get('http://localhost:8080/products/getAllProducts/sarees');
+      setData(fetchedData.data);
+    }
+    fetchData();
+  },[])
 
   const addToCart = async ()=>{
     const newQty = itemQty+1;
@@ -27,7 +35,7 @@ export default function ItemDetailsPage(props) {
       }
     }
     catch (error) {
-      console.log("Failed add to cart..!", error);
+      console.log("Error in cart..!", error);
     }
   
   }
@@ -83,7 +91,7 @@ export default function ItemDetailsPage(props) {
         <h3 className="text-center py-3">
           <b>—— RELATED ITEMS ——</b>
         </h3>
-        <SectionCarousel data={BestSellerCarouselData}/>
+        <SectionCarousel data={data}/>
       </div>
       <br/>
       <Footer/>

@@ -40,7 +40,7 @@ export default function ItemsDisplayPage(props) {
           <div className="row">
             {products.map((element) => {
               return (
-                <div className="col-md-4" key={element.image}>
+                <div className="col-md-4" key={element.prodId}>
                   <ItemCard
                     id={element.prodId}
                     brand={element.brand}
