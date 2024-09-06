@@ -127,12 +127,12 @@ export default function Cart(props) {
 
           <div className="row">
           <div className="col-md-6 py-1 ">Delivery Charges</div>
-          <div className="col-md-6 py-1 " style={{display:'flex',justifyContent:'right',color:'green'}}>Free</div>
+          <div className="col-md-6 py-1 " style={{display:'flex',justifyContent:'right',color:'green'}}>{totalCartAmt < 2000 ? <><s>Free</s>&nbsp;₹ 50</> : 'Free'}</div>
           </div>
           <hr/>
           <div className="row">
           <div className="col-md-6 py-1 ">Total Amount</div>
-          <div className="col-md-6 py-1 " style={{display:'flex',justifyContent:'right'}}>₹ {totalCartAmt}</div>
+          <div className="col-md-6 py-1 " style={{display:'flex',justifyContent:'right'}}>₹ {totalCartAmt < 2000 ? totalCartAmt+50 : totalCartAmt}</div>
           </div>
           
           <div style={{display:'flex',justifyContent:'center'}}>

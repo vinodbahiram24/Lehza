@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../Footer";
 import SectionCarousel from "../HomeSectionCarousel/SectionCarousel";
 import Navbar from "../Navbar";
@@ -9,6 +9,7 @@ export default function ItemDetailsPage(props) {
   const { id, title, price, image, brand, username} = useParams();
   const [itemQty, setItemQty] = useState(0);
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(()=>{
     const fetchData= async() =>{
@@ -29,7 +30,8 @@ export default function ItemDetailsPage(props) {
 
       if (response.status === 200 || response.status === 201) {
         setItemQty(newQty); // Update state after successful API call
-        console.log('Item added to cart:', response.data);
+        window.alert("Added to Cart!");
+        
       } else {
         console.error('Failed to add item to cart:', response.data);
       }
