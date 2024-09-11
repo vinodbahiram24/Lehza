@@ -136,7 +136,7 @@ export default function Cart(props) {
           </div>
           
           <div style={{display:'flex',justifyContent:'center'}}>
-          <button className="btn btn-success" onClick={()=>cartCheckout()}>Checkout</button>
+          <button className="btn btn-success" onClick={()=>cartCheckout()} >Checkout</button>
           </div>
 
         </div>

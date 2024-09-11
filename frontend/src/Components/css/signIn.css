@@ -12,16 +12,6 @@
     
 }
 
-@keyframes signUpAnim {
-    
-    0% {
-        transform: translateX(-100px); /* Start position */
-    }
-    100% {
-        transform: translateX(0px); /* End position */
-    }
-}
-
 .signUp{
     background-color: #9a8100;
     display: flex;
@@ -34,8 +24,6 @@
     border-top-left-radius: 20%;
     border-bottom-left-radius: 20%;
     opacity: 80%;
-    animation: signUpAnim 2s ease-in-out;
-   
 }
 
 .signIn{
@@ -62,7 +50,7 @@ input{
     font-family: 'Times New Roman', Times, serif;
 }
 
-h2{
+.headText{
     color: #000000 ;
     font-family: 'Times New Roman', Times, serif;
     padding-bottom: 1.5rem;

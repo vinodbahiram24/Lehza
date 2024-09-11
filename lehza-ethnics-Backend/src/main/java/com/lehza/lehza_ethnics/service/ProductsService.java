@@ -10,6 +10,8 @@ public interface ProductsService {
 	
 	List<Products> getAllProducts(String category);
 	
+	Products getProduct(Integer prodId);
+	
 	//POST
 	Products addProducts(Products products);
  
@@ -18,4 +20,6 @@ public interface ProductsService {
 	
 	//DELETE
 	String deleteProduct(Integer id);
+
+	
 }

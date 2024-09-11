@@ -6,15 +6,18 @@ import Navbar from "../Navbar";
 import axios from "axios";
 
 export default function ItemDetailsPage(props) {
-  const { id, title, price, image, brand, username} = useParams();
+  const {prodId, username} = useParams();
   const [itemQty, setItemQty] = useState(0);
-  const [data, setData] = useState([]);
-  const navigate = useNavigate();
+  const [couroselData, setCouroselDataData] = useState([]);
+  const [product, setProduct] = useState([]);
 
   useEffect(()=>{
     const fetchData= async() =>{
       const fetchedData = await axios.get('http://localhost:8080/products/getAllProducts/sarees');
-      setData(fetchedData.data);
+      setCouroselDataData(fetchedData.data);
+
+      const fetchedProduct = await axios.get(`http://localhost:8080/products/getProduct/${prodId}`);
+      setProduct(fetchedProduct.data);
     }
     fetchData();
   },[])
@@ -22,14 +25,14 @@ export default function ItemDetailsPage(props) {
   const addToCart = async ()=>{
     const newQty = itemQty+1;
     const cartDto = {
-      product: { prodId: id },  // Assuming 'id' is the field in ProductsDto
+      product: { prodId: prodId }, 
       quantity: newQty
   };
     try {
       const response = await axios.post(`http://localhost:8080/cart/addCart/${username}`, cartDto);
 
       if (response.status === 200 || response.status === 201) {
-        setItemQty(newQty); // Update state after successful API call
+        setItemQty(newQty); 
         window.alert("Added to Cart!");
         
       } else {
@@ -52,7 +55,7 @@ export default function ItemDetailsPage(props) {
         >
           <img
             className="img-fluid"
-            src={decodeURIComponent(image)}
+            src={product.image}
             alt="N/A"
             style={{
               boxShadow: "5px 5px 10px 4px rgba(0, 0, 0, 0.5)",
@@ -65,9 +68,9 @@ export default function ItemDetailsPage(props) {
           style={{ border: 1, borderColor: "black" }}
         >
           <div className="conatiner">
-            <h3 style={{color:'gray',fontWeight:'bold',textDecoration:'underline'}}>brand : {brand}</h3>
+            <h3 style={{color:'gray',fontWeight:'bold',textDecoration:'underline'}}>brand : {product.brand}</h3>
             <h5>
-              <b>{title}</b>
+              <b>{product.title}</b>
             </h5>
           </div>
           <div className="container" style={{height:'20rem'}}>
@@ -75,7 +78,7 @@ export default function ItemDetailsPage(props) {
           </div>
           <div className="conatiner pt-5">
             <h5>
-              <b>₹ {price}</b>
+              <b>₹ {product.price}</b>
             </h5>
           </div>
           <div className="py-3" style={{display: 'flex'}}>
@@ -93,7 +96,7 @@ export default function ItemDetailsPage(props) {
         <h3 className="text-center py-3">
           <b>—— RELATED ITEMS ——</b>
         </h3>
-        <SectionCarousel data={data}/>
+        <SectionCarousel data={couroselData}/>
       </div>
       <br/>
       <Footer/>

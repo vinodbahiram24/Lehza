@@ -42,7 +42,7 @@ export default function ItemsDisplayPage(props) {
               return (
                 <div className="col-md-4" key={element.prodId}>
                   <ItemCard
-                    id={element.prodId}
+                    prodId={element.prodId}
                     brand={element.brand}
                     title={element.title}
                     image={element.image}

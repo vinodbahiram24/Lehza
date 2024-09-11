@@ -44,7 +44,7 @@ function App() {
           <Route exact path="/partyWearSarees" element={<ItemsDisplayPage toggleMode={toggleMode} mode={mode} apiPath={"getProductsByCategory/4"} coverImg={partyWearSareeCover} />} />
           <Route exact path="/bridalSarees" element={<ItemsDisplayPage toggleMode={toggleMode} mode={mode} apiPath={"getProductsByCategory/5"} coverImg={bridalSareeCover} />} />
           <Route exact path="allSarees" element={<ItemsDisplayPage toggleMode={toggleMode} mode={mode} apiPath={"getAllProducts/Sarees"} coverImg={allSareeCover}/>}/>
-          <Route exact path="/itemDetail/:username/:id/:title/:price/:image/:brand" element={<ItemDetailsPage toggleMode={toggleMode} mode={mode} />} />
+          <Route exact path="/itemDetail/:username/:prodId" element={<ItemDetailsPage toggleMode={toggleMode} mode={mode} />} />
           <Route exact path="/cart" element={<Cart mode={mode} toggleMode={toggleMode}/>} />
           <Route exact path="/Checkout" element={<Checkout mode={mode} toggleMode={toggleMode}/>}/>
           <Route exact path="/OrderPlaced" element={<OrderPlaced mode={mode} toggleMode={toggleMode}/>}/>

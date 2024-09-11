@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lehza.lehza_ethnics.dto.ProductsDto;
 import com.lehza.lehza_ethnics.entities.Products;
 import com.lehza.lehza_ethnics.mapper.ProductsMapper;
 import com.lehza.lehza_ethnics.service.ProductsService;
@@ -41,6 +42,13 @@ public class ProductsController{
 	public ResponseEntity<List<Products>> getAll(@PathVariable String category)
 	{
 		return new ResponseEntity<>(productsService.getAllProducts(category),HttpStatus.OK);
+	}
+	
+	@GetMapping("/getProduct/{prodId}")
+	public ResponseEntity<ProductsDto>  getProduct(@PathVariable Integer prodId)
+	{
+		return new ResponseEntity<>(productMapper.productsToDto(productsService.getProduct(prodId)), HttpStatus.OK);
+		
 	}
 	
 	@PutMapping("/updateProduct")

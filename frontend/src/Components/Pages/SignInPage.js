@@ -59,7 +59,7 @@ export default function SignInPage(props) {
         {/* sign up */}
         <div className="signUp col-md-4">
           <form onSubmit={handleSignUp}>
-            <h2>Get Started</h2>
+            <h2 className="headText">Get Started</h2>
             <input id="username" value={signUpUsername} type="text" placeholder=" UserName" onChange={(e)=>setSignUpUsername(e.target.value)} required></input>
             <input id="email" value={signUpEmail} type="email" placeholder=" Email" onChange={(e)=>setSignUpEmail(e.target.value)} required></input>
             <input id="mobile" value={signUpMobile} type="tel" placeholder=" Mobile" onChange={(e)=>setSignUpMobile(e.target.value)} required></input>
@@ -71,7 +71,7 @@ export default function SignInPage(props) {
         {/* sign in */}
         <div className="signIn col-md-4">
           <form onSubmit={handleSignIn}> 
-            <h2>Welcome back !</h2>
+            <h2 className="headText">Welcome back !</h2>
             <input id="signInUsername" value={signInUsername} type="text" placeholder=" UserName" onChange={(e)=>setSignInUsername(e.target.value)} required></input>
             <input id="signInPassword" value={signInPassword} type="password" placeholder=" Password" onChange={(e)=>setSignInPassword(e.target.value)} required></input>
             <button type="submit">Login</button>

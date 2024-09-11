@@ -9,20 +9,19 @@ import axios from "axios";
 
 export default function HomePage(props) {
 
-  const [ data, setData ] = useState([]);
+  const [bestSellerdata, setBestSellerData] = useState([]);
 
   useEffect(()=>{
     const fetchData= async () => {
       try {
-        const response = await axios.get('http://localhost:8080/products/getAllProducts/sarees');
-        setData(response.data);
+        const response = await axios.get('http://localhost:8080/order/getAllOrders');
+        setBestSellerData(response.data);
       } catch (error) {
         console.log('error in homePage fechData :', error );
       }
     }
-    fetchData()
+    fetchData();
   },[])
-
   return (
     <>
     {/* Navbar */}
@@ -39,7 +38,7 @@ export default function HomePage(props) {
         <p className="trendingText" style={{ color: "gray" }}>
           <i>Top view in this week</i>
         </p>
-        <SectionCarousel data={data}/>
+        <SectionCarousel data={bestSellerdata}/>
       </div>
 
       <div className="bestSeller">
@@ -49,12 +48,12 @@ export default function HomePage(props) {
         <p className="bestSellerText" style={{ color: "gray" }}>
           <i>Top sale in this week</i>
         </p>
-        <SectionCarousel data={data} />
+        <SectionCarousel data={bestSellerdata} />
       </div>
 
       <div className="faq">
         <center><h4>—— FAQS ——</h4></center>
-        <FAQ mode={props.mode} />
+        <FAQ mode={props.mode}/>
       </div>
 
       <Footer/>

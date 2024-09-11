@@ -32,6 +32,12 @@ public class ProductsServiceImpl implements ProductsService {
 		
 		return productsRepo.findAllByCategory(category);
 	}
+	
+	@Override
+	public Products getProduct(Integer prodId)
+	{
+		return productsRepo.getById(prodId);
+	}
 
 	@Override
 	public Products addProducts(Products products) 
