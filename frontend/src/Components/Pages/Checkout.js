@@ -3,6 +3,7 @@ import Navbar from "../Navbar";
 import { useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import Footer from "../Footer";
 
 export default function Checkout(props) {
     const [user, setUser] = useState({});
@@ -101,6 +102,7 @@ export default function Checkout(props) {
           </div>
           </div>
       </div>
+      <Footer/>
     </>
   );
 }
