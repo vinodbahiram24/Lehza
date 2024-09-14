@@ -60,11 +60,11 @@ export default function SignInPage(props) {
         <div className="signUp col-md-4">
           <form onSubmit={handleSignUp}>
             <h2 className="headText">Get Started</h2>
-            <input id="username" value={signUpUsername} type="text" placeholder=" UserName" onChange={(e)=>setSignUpUsername(e.target.value)} required></input>
-            <input id="email" value={signUpEmail} type="email" placeholder=" Email" onChange={(e)=>setSignUpEmail(e.target.value)} required></input>
-            <input id="mobile" value={signUpMobile} type="tel" placeholder=" Mobile" onChange={(e)=>setSignUpMobile(e.target.value)} required></input>
-            <input id="password" value={signUpPassword} type="password" placeholder=" Password" onChange={(e)=>setSignUpPassword(e.target.value)} required></input>
-            <button type="submit">Create</button>
+            <input className="signInInput" id="username" value={signUpUsername} type="text" placeholder=" UserName" onChange={(e)=>setSignUpUsername(e.target.value)} required></input>
+            <input className="signInInput" id="email" value={signUpEmail} type="email" placeholder=" Email" onChange={(e)=>setSignUpEmail(e.target.value)} required></input>
+            <input className="signInInput" id="mobile" value={signUpMobile} type="tel" placeholder=" Mobile" onChange={(e)=>setSignUpMobile(e.target.value)} required></input>
+            <input className="signInInput" id="password" value={signUpPassword} type="password" placeholder=" Password" onChange={(e)=>setSignUpPassword(e.target.value)} required></input>
+            <button className="signInBtn" type="submit">Create</button>
             <div className="message-div"><p>{signUpMessage}</p></div>
           </form>
         </div>
@@ -72,9 +72,9 @@ export default function SignInPage(props) {
         <div className="signIn col-md-4">
           <form onSubmit={handleSignIn}> 
             <h2 className="headText">Welcome back !</h2>
-            <input id="signInUsername" value={signInUsername} type="text" placeholder=" UserName" onChange={(e)=>setSignInUsername(e.target.value)} required></input>
-            <input id="signInPassword" value={signInPassword} type="password" placeholder=" Password" onChange={(e)=>setSignInPassword(e.target.value)} required></input>
-            <button type="submit">Login</button>
+            <input className="signInInput" id="signInUsername" value={signInUsername} type="text" placeholder=" UserName" onChange={(e)=>setSignInUsername(e.target.value)} required></input>
+            <input className="signInInput" id="signInPassword" value={signInPassword} type="password" placeholder=" Password" onChange={(e)=>setSignInPassword(e.target.value)} required></input>
+            <button className="signInBtn" type="submit">Login</button>
             <div className="message-div"><p>{signInMessage}</p></div>
           </form>
         </div>

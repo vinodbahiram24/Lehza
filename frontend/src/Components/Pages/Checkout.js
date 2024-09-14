@@ -11,7 +11,7 @@ export default function Checkout(props) {
     const [pincode, setPincode] = useState('');
     const [state, setState] = useState('');
     const location = useLocation();
-    const {totalCartAmt, cartData} = location.state || {};
+    const {totalCartAmt} = location.state || {};
     const navigate = useNavigate();
 
 
@@ -35,7 +35,6 @@ export default function Checkout(props) {
       setState("");
 
       window.alert("Address Updated..!")
-
     }
 
     const placeOrder = async () => {
@@ -60,30 +59,30 @@ export default function Checkout(props) {
             <div className="col-md-9" style={{border:"1px", borderColor: 'red'}}>
             <center><h4>Address</h4></center>
             <hr/>
-            <div className="address">
+            <div className="address" style={{paddingBlock:'2rem'}}>
             {user.address}<br/> {user.city}<br/>{user.pincode}<br/>{user.state}
             </div>
             <hr/>
             <div className="addressForm py-2 px-5">
             <center><h5>or update address</h5></center>
             <form className="text-center" onSubmit={updateAddress}>
-                <input type="text" placeholder="address" value={address} style={{width:'45rem',borderRadius:10}} onChange={(e)=>setAddress(e.target.value)} required></input>
-                <input type="text" placeholder="city" value={city} style={{width:'45rem',borderRadius:10}} onChange={(e)=>setCity(e.target.value)} required></input>
-                <input type="text" placeholder="pincode" value={pincode} style={{width:'45rem',borderRadius:10}} onChange={(e)=>setPincode(e.target.value)} required></input>
-                <input type="text" placeholder="state" value={state} style={{width:'45rem',borderRadius:10}} onChange={(e)=>setState(e.target.value)} required></input>
-                <button type="submit" className="btn btn-success" style={{borderRadius:20}}>Update</button>
+                <input className="updateAddInput" type="text" placeholder="address" value={address} style={{width:'30rem', height:'3rem' , borderRadius:10}} onChange={(e)=>setAddress(e.target.value)} required></input>
+                <input className="updateAddInput" type="text" placeholder="city" value={city} style={{width:'30rem', height:'3rem',borderRadius:10}} onChange={(e)=>setCity(e.target.value)} required></input>
+                <input className="updateAddInput" type="text" placeholder="pincode" value={pincode} style={{width:'30rem', height:'3rem',borderRadius:10}} onChange={(e)=>setPincode(e.target.value)} required></input>
+                <input className="updateAddInput" type="text" placeholder="state" value={state} style={{width:'30rem', height:'3rem',borderRadius:10}} onChange={(e)=>setState(e.target.value)} required></input><br/>
+                <button type="submit" className="btn btn-success" style={{width:'5rem', borderRadius:20, marginTop:'1rem'}}>Update</button>
             </form>
 
             </div>
 
             </div>
 
-            <div className="col-md-3">
-            <center><h4>Price Details</h4></center>
-            <hr/>
-            <div className="row">
+          <div className="col-md-3">
+          <center><h4>Price Details</h4></center>
+          <hr/>
+          <div className="row">
           <div className="col-md-6 py-1 ">Price</div>
-          <div className="col-md-6 py-1 " style={{display:'flex', justifyContent:'right'}}>₹ {totalCartAmt}</div>
+          <div className="col-md-6 py-1 " style={{display:'flex', justifyContent:'right'}}>₹ {totalCartAmt ? totalCartAmt : 0}</div>
           </div>
 
           <div className="row">
@@ -91,15 +90,16 @@ export default function Checkout(props) {
           <div className="col-md-6 py-1 " style={{display:'flex', justifyContent:'right',color:'green'}}>Free</div>
           </div>
           <hr/>
+
           <div className="row">
           <div className="col-md-6 py-1 ">Total Amount</div>
-          <div className="col-md-6 py-1 " style={{display:'flex', justifyContent:'right'}}>₹ {totalCartAmt}</div>
+          <div className="col-md-6 py-1 " style={{display:'flex', justifyContent:'right'}}>₹ {totalCartAmt ? totalCartAmt : 0}</div>
           </div>
           
-          <div style={{display:'flex',justifyContent:'center'}}>
-          <button className="btn btn-success" style={{width:'7rem', borderRadius:20}} onClick={()=>placeOrder()}>Place Order</button>
+          <div style={{display:'flex',justifyContent:'center',padding:'1rem'}}>
+          <button className="btn btn-success" style={{width:'7rem', borderRadius:20}} onClick={()=>placeOrder()} disabled={totalCartAmt === 0}>Place Order</button>
           </div>
-            </div>
+          </div>
       </div>
     </>
   );

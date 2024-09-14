@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.lehza.lehza_ethnics.dto.OrdersDto;
+import com.lehza.lehza_ethnics.dto.ProductsDto;
 import com.lehza.lehza_ethnics.entities.Cart;
 import com.lehza.lehza_ethnics.entities.Orders;
 import com.lehza.lehza_ethnics.mapper.OrdersMapper;
@@ -53,6 +54,13 @@ public class OrderServiceImpl implements OrderService {
 		List<OrdersDto> orderDtoList = orderRepo.findAll().stream().map((e)-> orderMapper.ordersToDto(e)).collect(Collectors.toList());
 		return orderDtoList;
 	}
+	
+	@Override
+	public List<ProductsDto> getOrderedProducts()
+	{
+		 List<ProductsDto> productsListDto = productsRepo.getOrderedProducts().stream().map((e)->prodMapper.productsToDto(e)).collect(Collectors.toList());
+		 return productsListDto;
+	}
 
 	@Override
 	public List<OrdersDto> createOrder( String username)
@@ -62,10 +70,8 @@ public class OrderServiceImpl implements OrderService {
 		List<OrdersDto> orderListDto = new ArrayList<>();
 		
 		OrdersDto orderDto;
-		Random random = new Random();
 		for(Cart c : cartList) {
 			orderDto = new OrdersDto();
-			orderDto.setOrderId("OID"+ random.nextInt(1000));
 			orderDto.setUser(userMapper.usersToDto(c.getUser()));
 			orderDto.setProduct(prodMapper.productsToDto(c.getProduct()));
 			orderDto.setDate(LocalDate.now());

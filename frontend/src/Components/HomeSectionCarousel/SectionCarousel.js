@@ -9,9 +9,7 @@ const responsive = {
 };
 
 export default function SectionCarousel(props) {
-  const items = props.data.filter(item => item && item.product)
-  .map(item => <CarouselCard key={item.product.prodId} item={item.product} />);
-
+  const items = props.data.map(item => <CarouselCard key={item.prodId} item={item} />);
   return (
     <div className="container">
     <AliceCarousel

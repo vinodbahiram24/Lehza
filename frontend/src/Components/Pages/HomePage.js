@@ -14,7 +14,7 @@ export default function HomePage(props) {
   useEffect(()=>{
     const fetchData= async () => {
       try {
-        const response = await axios.get('http://localhost:8080/order/getAllOrders');
+        const response = await axios.get('http://localhost:8080/order/getOrderedProducts');
         setBestSellerData(response.data);
       } catch (error) {
         console.log('error in homePage fechData :', error );
@@ -22,6 +22,7 @@ export default function HomePage(props) {
     }
     fetchData();
   },[])
+  
   return (
     <>
     {/* Navbar */}

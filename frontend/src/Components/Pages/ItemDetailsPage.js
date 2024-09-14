@@ -8,26 +8,53 @@ import axios from "axios";
 export default function ItemDetailsPage(props) {
   const {prodId, username} = useParams();
   const [itemQty, setItemQty] = useState(0);
-  const [couroselData, setCouroselDataData] = useState([]);
+  const [relatedCouroselData, setRelatedCouroselData] = useState([]);
+  const [totalCartAmt, setTotalCartAmount] = useState(0);
   const [product, setProduct] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(()=>{
     const fetchData= async() =>{
-      const fetchedData = await axios.get('http://localhost:8080/products/getAllProducts/sarees');
-      setCouroselDataData(fetchedData.data);
-
       const fetchedProduct = await axios.get(`http://localhost:8080/products/getProduct/${prodId}`);
       setProduct(fetchedProduct.data);
+      setTotalCartAmount(fetchedProduct.data.price);
+      const fetchedData = await axios.get('http://localhost:8080/products/getAllProducts/sarees');
+      setRelatedCouroselData(fetchedData.data);
+
     }
     fetchData();
-  },[])
+  },[prodId])
+
+  console.log(totalCartAmt);
+
+  const buy = async ()=>{
+    const cartDto = {
+      product: { prodId: prodId }, 
+      quantity: 1
+    };
+
+    try {
+      const response = await axios.post(`http://localhost:8080/cart/addCart/${username}`, cartDto);
+      if (response.status === 200 || response.status === 201) {
+        setItemQty(1); 
+        navigate("/checkout",{state: {totalCartAmt}});
+
+      } else {
+        console.error('Failed to add item to cart:', response.data);
+      }
+    }
+    catch (error) {
+      console.log("Error in cart..!", error);
+    }
+  }
 
   const addToCart = async ()=>{
+    
     const newQty = itemQty+1;
     const cartDto = {
       product: { prodId: prodId }, 
       quantity: newQty
-  };
+    };
     try {
       const response = await axios.post(`http://localhost:8080/cart/addCart/${username}`, cartDto);
 
@@ -42,7 +69,6 @@ export default function ItemDetailsPage(props) {
     catch (error) {
       console.log("Error in cart..!", error);
     }
-  
   }
 
   return (
@@ -70,23 +96,22 @@ export default function ItemDetailsPage(props) {
           <div className="conatiner">
             <h3 style={{color:'gray',fontWeight:'bold',textDecoration:'underline'}}>brand : {product.brand}</h3>
             <h5>
-              <b>{product.title}</b>
+            {product.title}
             </h5>
           </div>
           <div className="container" style={{height:'20rem'}}>
-            {/* description to add */}
+            {/* description to add */ product.description}
           </div>
           <div className="conatiner pt-5">
             <h5>
               <b>₹ {product.price}</b>
             </h5>
           </div>
-          <div className="py-3" style={{display: 'flex'}}>
-            <button type="button" className="btn btn-warning pl-5">
+          <div className="py-3">
+            <button type="button" className="buyBtn btn btn-warning" onClick={buy}>
               <strong>Buy</strong>
             </button>
-            &nbsp;
-            <button type="button" className="btn btn-warning" onClick={addToCart} style={{marginLeft:'1rem', width:'150px'}}>
+            <button type="button" className="addCartBtn btn btn-warning" onClick={addToCart} style={{marginLeft:'1rem', width:'120px'}}>
               <strong>Add to Cart</strong>
             </button>
           </div>  
@@ -96,7 +121,7 @@ export default function ItemDetailsPage(props) {
         <h3 className="text-center py-3">
           <b>—— RELATED ITEMS ——</b>
         </h3>
-        <SectionCarousel data={couroselData}/>
+        <SectionCarousel data={relatedCouroselData}/>
       </div>
       <br/>
       <Footer/>

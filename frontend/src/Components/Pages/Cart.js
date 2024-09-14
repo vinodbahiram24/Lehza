@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Footer";
 
 export default function Cart(props) {
   const [cartData, setCartData] = useState([]);
@@ -29,12 +30,11 @@ export default function Cart(props) {
     if (window.confirm("Are you sure you want to remove this item from the cart?")) {
       try {
         await axios.delete(`http://localhost:8080/cart/deleteCart/${localStorage.getItem("username")}/${prodId}`);
-        
         // Update cartData and totalCartAmt after deletion
         setCartData((prevData) => prevData.filter((item) => item.product.prodId !== prodId));
-        setTotalCartAmount((prevTotal) => prevTotal - cartData.find(item => item.product.prodId === prodId).totalAmount);
+        setTotalCartAmount(totalCartAmt - cartData.find(item => item.product.prodId === prodId).totalAmount);
       } catch (error) {
-        console.log("Error while deleting cart item: ", error);
+        console.log("Error while deleting cart item: ", error); 
       }
     }
   };
@@ -68,79 +68,106 @@ export default function Cart(props) {
       navigate("/Checkout",{ state : {cartData, totalCartAmt}});
   }
 
-  return (
-    <>
-      {/* navbar */}
-      <div>
-        <Navbar toggleMode={props.toggleMode} mode={props.mode} />
-      </div>
-      <div className="container">
+  
+    if(cartData.length ===0)
+    {
+      return(
+        <>
+        {/* navbar */}
+        <div><Navbar toggleMode={props.toggleMode} mode={props.mode} /></div>
+        <div className="container">
         <center><h2 style={{ paddingTop: "3rem" }}>Shopping Cart</h2></center>
-      </div>
-      <hr />
-      {/* body */}
-      <div className="row">
-        <div className="col-md-9">
-          {cartData.map((element) => {
-            return (
-              <React.Fragment key={element.cartId}>
-                <div className="row py-4 px-4">
-                  {/* productDetails */}
-                  <div className="col-md-4" style={{ height: "9rem", width: "9rem" }}>
-                    <img className="img-fluid" src={element.product.image} alt="N/A" />
-                  </div>
-                  <div className="col-md-8" style={{ height: "9rem" }}>
-                    <div>
-                      <h5>{element.product.title.slice(0, 50)}...</h5>
-                    </div>
-
-                    <div>
-                    <i class="bi bi-dash-circle" onClick={()=>handleUpdate(element.quantity-1,element.product.prodId)}></i>
-                    <input className="text-center" type="text" min={0} max={10} style={{height:'2rem',width:'2rem', borderRadius:15}} value={element.quantity}></input>
-                    <i class="bi bi-plus-circle" onClick={()=>handleUpdate(element.quantity+1,element.product.prodId)}></i>
-                    </div>
-
-                    {/* <div>Quantity: {element.quantity}</div> */}
-                    <div>₹ {element.product.price}</div>
-                  </div>
-                  <div className="cartDeleteBtn">
-                    <i
-                      type="button"
-                      className="bi bi-trash3"
-                      onClick={() => handleDelete(element.product.prodId)}
-                    > remove
-                    </i>
-                  </div>
-                </div>
-                <hr />
-              </React.Fragment>
-            );
-          })}
         </div>
-        {/* orderDetails */}
-        <div className="col-md-3 px-4"><center><h4>Price Details</h4></center>
-          <hr/>
-          <div className="row">
-          <div className="col-md-6 py-1 ">Price</div>
-          <div className="col-md-6 py-1 " style={{display:'flex', justifyContent:'right'}}>₹ {totalCartAmt}</div>
-          </div>
-
-          <div className="row">
-          <div className="col-md-6 py-1 ">Delivery Charges</div>
-          <div className="col-md-6 py-1 " style={{display:'flex',justifyContent:'right',color:'green'}}>{totalCartAmt < 2000 ? <><s>Free</s>&nbsp;₹ 50</> : 'Free'}</div>
-          </div>
-          <hr/>
-          <div className="row">
-          <div className="col-md-6 py-1 ">Total Amount</div>
-          <div className="col-md-6 py-1 " style={{display:'flex',justifyContent:'right'}}>₹ {totalCartAmt < 2000 ? totalCartAmt+50 : totalCartAmt}</div>
-          </div>
-          
-          <div style={{display:'flex',justifyContent:'center'}}>
-          <button className="btn btn-success" onClick={()=>cartCheckout()} >Checkout</button>
-          </div>
-
+        <hr />
+        <div className="container" style={{display:'flex', justifyContent:'center',paddingTop:'5rem'}}>
+          <h1>Oops...Your Cart Is Empty!</h1>
         </div>
-      </div>
-    </>
-  );
+        <div className="container emptyCart" style={{display:'flex', justifyContent:'center',paddingBottom:'5rem'}}>
+          <a href="/home">Click here to shop</a>
+        </div>
+        <Footer/>
+      </>
+      );
+    }
+    else
+    {
+      return(
+        <>
+        {/* navbar */}
+        <div>
+          <Navbar toggleMode={props.toggleMode} mode={props.mode} />
+        </div>
+        <div className="container">
+          <center><h2 style={{paddingTop: "3rem"}}>Shopping Cart</h2></center>
+        </div>
+        <hr />
+        {/* body */}
+        <div className="row">
+          <div className="col-md-9">
+            {cartData.map((element) => {
+              return (
+                <React.Fragment key={element.cartId}>
+                  <div className="row py-4 px-4">
+                    {/* productDetails */}
+                    <div className="col-md-4" style={{ height: "9rem", width: "9rem" }}>
+                      <img className="img-fluid" src={element.product.image} alt="N/A" />
+                    </div>
+                    <div className="col-md-8" style={{ height: "9rem" }}>
+                      <div>
+                        <h5>{element.product.title}</h5>
+                      </div>
+  
+                      <div>
+                      <i class="bi bi-dash-circle" onClick={()=>handleUpdate(element.quantity-1,element.product.prodId)}></i>
+                      <input className="text-center" type="text" min={0} max={10} style={{height:'2rem', width:'2rem', borderRadius:15, margin:'5px', opacity:'60%'}} value={element.quantity}></input>
+                      <i class="bi bi-plus-circle" onClick={()=>handleUpdate(element.quantity+1,element.product.prodId)}></i>
+                      </div>
+  
+                      {/* <div>Quantity: {element.quantity}</div> */}
+                      <div>₹ {element.product.price}</div>
+                    </div>
+                    <div className="cartDeleteBtn">
+                      <i
+                        type="button"
+                        className="bi bi-trash3"
+                        onClick={() => handleDelete(element.product.prodId)}
+                      > remove
+                      </i>
+                    </div>
+                  </div>
+                  <hr />
+                </React.Fragment>
+              );
+            })}
+          </div>
+          {/* orderDetails */}
+          <div className="col-md-3 px-4"><center><h4>Price Details</h4></center>
+            <hr/>
+            <div className="row">
+            <div className="col-md-6 py-1 ">Price</div>
+            <div className="col-md-6 py-1 " style={{display:'flex', justifyContent:'right'}}>₹ {totalCartAmt}</div>
+            </div>
+  
+            <div className="row">
+            <div className="col-md-6 py-1 ">Delivery Charges</div>
+            <div className="col-md-6 py-1 " style={{display:'flex',justifyContent:'right',color:'green'}}>{totalCartAmt < 2000 && totalCartAmt!==0 ? <><s>Free</s>&nbsp; ₹ 50</> : 'Free'}</div>
+            </div>
+            <hr/>
+            <div className="row">
+            <div className="col-md-6 py-1 ">Total Amount</div>
+            <div className="col-md-6 py-1 " style={{display:'flex',justifyContent:'right'}}>₹ {totalCartAmt < 2000 && totalCartAmt!==0 ? totalCartAmt + 50 : totalCartAmt}</div>
+            </div>
+            
+            <div style={{display:'flex',justifyContent:'center', padding:'1rem'}}>
+            <button className="checkoutBtn btn btn-success" onClick={()=>cartCheckout()} disabled={cartData.length === 0}>Checkout</button>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <Footer/>
+      </>
+      );
+    }
+   
+  
 }

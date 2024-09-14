@@ -7,11 +7,11 @@ export default function Footer() {
   }
 
   return (
-    <div
-        className="footer row px-4 py-3"
-        style={{ backgroundColor: "#9a8100", color: "black"}}
+    <footer
+        className="footer row"
+        style={{ backgroundColor: "#9a8100", color: "black", padding:'1rem', marginTop:'5rem', position:'relative'}}
       >
-        <div className="col-sm-4 mb-3 mb-sm-0 px-4 py-3">
+        <div className="col-sm-4 px-4 py-3">
           <b>Contact Us</b>
           <hr/>
           <p>
@@ -28,7 +28,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="col-sm-4 mb-3 mb-sm-0 px-4 py-3">
+        <div className="col-sm-4 px-4 py-3">
           <b>About Us</b>
           <hr/>
           <p>
@@ -39,7 +39,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="col-sm-4 mb-3 mb-sm-0 px-4 py-3">
+        <div className="col-sm-4 px-4 py-3">
           <b>Follow Us</b>
           <hr/>
           <a href="https://www.facebook.com" target='_blank' rel="noreferrer" ><i className="bi bi-facebook"> &nbsp; </i></a>
@@ -49,6 +49,6 @@ export default function Footer() {
         </div>
         <hr/>
         <strong>© 2024 LEHZA PVT LTD.</strong>
-      </div>
+      </footer>
   )
 }

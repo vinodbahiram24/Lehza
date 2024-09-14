@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar';
 import axios from 'axios';
+import Footer from '../Footer';
 
 export default function Orders(props) {
-    const [orders, setOrders] = useState({});
+    const [orders, setOrders] = useState([]);
   
     useEffect(() => {
       const fetchOrders = async () => {
         const response = await axios.get(`http://localhost:8080/order/getOrdersByUser/${localStorage.getItem("username")}`);
-        setOrders(response.data);
+        setOrders(response.data.reverse());
       };
       fetchOrders();
     }, []);
@@ -52,6 +53,7 @@ export default function Orders(props) {
             <h4>No order details available.</h4>
           </div>
         )}
+        <Footer/>
       </>
     );
 }

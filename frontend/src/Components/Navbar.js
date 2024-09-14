@@ -7,7 +7,7 @@ export default function Navbar(props) {
       style={{ backgroundColor: "#9a8100" }}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <a className="navbar-brand" href="/home">
           <h3>
             <b>Lehza</b>
           </h3>

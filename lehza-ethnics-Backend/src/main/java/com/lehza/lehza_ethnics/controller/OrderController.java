@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.lehza.lehza_ethnics.dto.OrdersDto;
+import com.lehza.lehza_ethnics.dto.ProductsDto;
 import com.lehza.lehza_ethnics.entities.Orders;
 import com.lehza.lehza_ethnics.mapper.OrdersMapper;
 import com.lehza.lehza_ethnics.service.OrderService;
@@ -38,6 +39,12 @@ public class OrderController {
 	public ResponseEntity<List<OrdersDto>> getAllOrders()
 	{
 		return new ResponseEntity<>(orderService.getAllOrders(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/getOrderedProducts")
+	public ResponseEntity<List<ProductsDto>> getOrderedProducts()
+	{
+		return new ResponseEntity<>(orderService.getOrderedProducts(), HttpStatus.OK);
 	}
 	
 	@PostMapping("/createOrder/{username}")
