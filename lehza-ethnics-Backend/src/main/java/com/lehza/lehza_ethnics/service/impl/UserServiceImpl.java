@@ -85,9 +85,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public UsersDto updateUserById(UsersDto usersDto, Integer id) 
+	public UsersDto updateUserByUsername(UsersDto usersDto, String username) 
 	{
-		UsersDto existingUser = userMapper.usersToDto(userRepo.getById(id));
+		UsersDto existingUser = userMapper.usersToDto(userRepo.getUserByUsername(username));
 	
 		if (usersDto.getAddress() != null && !usersDto.getAddress().equals("") ) {
 	        existingUser.setAddress(usersDto.getAddress());

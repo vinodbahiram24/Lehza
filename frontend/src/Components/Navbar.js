@@ -7,7 +7,7 @@ export default function Navbar(props) {
       style={{ backgroundColor: "#9a8100" }}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="/home">
+        <a className="brandLogo navbar-brand" href="/home">
           <h3>
             <b>Lehza</b>
           </h3>
@@ -118,11 +118,13 @@ export default function Navbar(props) {
                 </li>
                 <li>
                   <a className="dropdown-item" href="/">
-                    Something else here
+                    All Lehengas
                   </a>
                 </li>
               </ul>
             </li>
+            
+          </ul>
 
             <li className="nav-item dropdown px-3">
               <a
@@ -132,35 +134,26 @@ export default function Navbar(props) {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Upcoming..
+              {localStorage.getItem("username")}
               </a>
               <ul
                 className="dropdown-menu"
                 style={{ backgroundColor: "#9a8100" }}
               >
                 <li>
-                  <a className="dropdown-item" href="/">
-                    Action
+                  <a className="dropdown-item" href="/Orders">
+                    Your Orders
                   </a>
                 </li>
+
                 <li>
-                  <a className="dropdown-item" href="/">
-                    ..
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="/">
-                    ..
+                  <a className="dropdown-item" href="/" onClick={()=>{localStorage.clear()}}>
+                    Logout
                   </a>
                 </li>
               </ul>
             </li>
-          </ul>
-
-          <div style={{color:'black'}}>{localStorage.getItem('username')}</div>
+          
 
           <a href="/cart">
             <i

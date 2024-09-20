@@ -40,12 +40,11 @@ public class Orders {
 	private Integer quantity;
 	private Float amount;
 	
-	 // Transient field to add the OID prefix to orderId
     @Transient
     private String prefixedOrderId;
 
-    public String getPrefixedOrderId() {
-        return "OID" + this.orderId;  // OID with leading zeros (e.g., OID001)
+    public String getPrefixedOrderId(){
+        return "OID" + this.orderId;
     }
 	
 }

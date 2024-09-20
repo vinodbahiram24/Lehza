@@ -26,7 +26,7 @@ export default function Checkout(props) {
 
     const updateAddress = async (e) =>{
       e.preventDefault();
-      const response = await axios.put(`http://localhost:8080/users/updateUser/3`, {address: address, city: city, pincode: parseInt(pincode) , state: state});
+      const response = await axios.put(`http://localhost:8080/users/updateUser/${localStorage.getItem("username")}`, {address: address, city: city, pincode: parseInt(pincode) , state: state});
       console.log(response.data);
       setUser(response.data);
 
@@ -98,7 +98,7 @@ export default function Checkout(props) {
           </div>
           
           <div style={{display:'flex',justifyContent:'center',padding:'1rem'}}>
-          <button className="btn btn-success" style={{width:'7rem', borderRadius:20}} onClick={()=>placeOrder()} disabled={totalCartAmt === 0}>Place Order</button>
+          <button className="btn btn-success" style={{width:'7rem', borderRadius:20}} onClick={()=>placeOrder()} disabled={totalCartAmt === 0 || user.address === null}>Place Order</button>
           </div>
           </div>
       </div>

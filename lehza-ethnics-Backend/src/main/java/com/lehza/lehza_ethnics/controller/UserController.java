@@ -57,11 +57,11 @@ public class UserController {
 			
 	}
 	
-	@PutMapping("/updateUser/{id}")
-	public UsersDto updateUser(@RequestBody Users user, @PathVariable Integer id)
+	@PutMapping("/updateUser/{username}")
+	public UsersDto updateUser(@RequestBody Users user, @PathVariable String username)
 	{
 		UsersDto usersDto = usersMapper.usersToDto(user);
-		return userService.updateUserById(usersDto, id);
+		return userService.updateUserByUsername(usersDto, username);
 	}
 	
 	@DeleteMapping("/deleteUser/{id}")

@@ -98,7 +98,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public String deleteOrder(String orderId) {
+	public String deleteOrder(Integer orderId) {
 		orderRepo.deleteById(orderId);
 		return "Order Deleted!";
 	}

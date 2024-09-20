@@ -25,6 +25,10 @@ export default function SignInPage(props) {
       const response = await axios.post("http://localhost:8080/users/register",{username : signUpUsername, email:signUpEmail, mobile:signUpMobile, password: signUpPassword});
       setSignUpMessage(response.data);
     } catch (error) {
+      setSignUpUsername("");
+      setSignUpEmail("");
+      setSignUpMobile("");
+      setSignUpPassword("");
       console.error("error while registering: ", error);
       setSignUpMessage("User Already Exists!!");
     } 
@@ -35,11 +39,16 @@ export default function SignInPage(props) {
     try {
      const response = await axios.post("http://localhost:8080/users/auth", {username : signInUsername, password: signInPassword});
      setSignInMessage(response.data);
-     localStorage.setItem("username",signInUsername)
-     localStorage.setItem("password",signInPassword)
      if(response.data === "AUTHORIZED")
-     {navigate("/home")}
+     {
+      localStorage.setItem("username",signInUsername);
+      setSignInUsername("");
+      setSignInPassword("");
+      navigate("/home");
+     }
      else
+     setSignInUsername("");
+     setSignInPassword("");
      {setSignInMessage("Invalid Credentials!")}
 
     } catch (error) {

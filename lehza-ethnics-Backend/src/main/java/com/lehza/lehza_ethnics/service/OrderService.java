@@ -18,7 +18,7 @@ public interface OrderService {
 	
 	Orders updateOrderStatus(Integer id, String status);
 	
-	String deleteOrder(String orderId);
+	String deleteOrder(Integer orderId);
 
 	
 	
