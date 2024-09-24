@@ -3,23 +3,36 @@ import ItemCard from "./ItemCard";
 import Footer from "../Footer";
 import axios from "axios";
 import Navbar from "../Navbar";
+import { useNavigate } from "react-router-dom";
+import "../../App.css";
 
 export default function ItemsDisplayPage(props) {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/products/${props.apiPath}`)
-        console.log(response.data);
+        const response = await axios.get(`http://localhost:8080/products/${props.apiPath}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          })
       setProducts(response.data);
       } catch (error) {
-        console.error('error in fetching data: ', error)
+        if(error.response.status === 401)
+          {
+            navigate("/notAuthorized");
+          }
+          else{
+            console.log("error in ItemsDisplayPage: ", error);
+          }
       }
       
     };
     fetchData();
-  },[props.apiPath]);
+  },[props.apiPath,navigate]);
 
   return (
     <>

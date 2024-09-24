@@ -6,7 +6,7 @@ import Navbar from "../Navbar";
 import axios from "axios";
 
 export default function ItemDetailsPage(props) {
-  const {prodId, username} = useParams();
+  const {prodId} = useParams();
   const [itemQty, setItemQty] = useState(0);
   const [relatedCouroselData, setRelatedCouroselData] = useState([]);
   const [totalCartAmt, setTotalCartAmount] = useState(0);
@@ -15,15 +15,35 @@ export default function ItemDetailsPage(props) {
 
   useEffect(()=>{
     const fetchData= async() =>{
-      const fetchedProduct = await axios.get(`http://localhost:8080/products/getProduct/${prodId}`);
-      setProduct(fetchedProduct.data);
-      setTotalCartAmount(fetchedProduct.data.price);
-      const fetchedData = await axios.get('http://localhost:8080/products/getAllProducts/sarees');
-      setRelatedCouroselData(fetchedData.data);
+      try {
+        const fetchedProduct = await axios.get(`http://localhost:8080/products/getProduct/${prodId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
+        setProduct(fetchedProduct.data);
+        setTotalCartAmount(fetchedProduct.data.price);
+        const fetchedData = await axios.get('http://localhost:8080/products/getAllProducts/sarees',
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
+        setRelatedCouroselData(fetchedData.data);
+      } catch (error) {
+        if(error.response.status === 401)
+          {
+            navigate("/notAuthorized");
+          }
+          else{
+            console.log("error in ItemDetailsPage: ", error);
+          }
+      }
 
     }
     fetchData();
-  },[prodId])
+  },[prodId,navigate])
 
   console.log(totalCartAmt);
 
@@ -34,7 +54,12 @@ export default function ItemDetailsPage(props) {
     };
 
     try {
-      const response = await axios.post(`http://localhost:8080/cart/addCart/${username}`, cartDto);
+      const response = await axios.post(`http://localhost:8080/cart/addCart`, cartDto,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
       if (response.status === 200 || response.status === 201) {
         setItemQty(1); 
         navigate("/checkout",{state: {totalCartAmt}});
@@ -56,7 +81,12 @@ export default function ItemDetailsPage(props) {
       quantity: newQty
     };
     try {
-      const response = await axios.post(`http://localhost:8080/cart/addCart/${username}`, cartDto);
+      const response = await axios.post(`http://localhost:8080/cart/addCart`, cartDto,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
 
       if (response.status === 200 || response.status === 201) {
         setItemQty(newQty); 
@@ -85,6 +115,7 @@ export default function ItemDetailsPage(props) {
             alt="N/A"
             style={{
               boxShadow: "5px 5px 10px 4px rgba(0, 0, 0, 0.5)",
+              borderRadius:40,
               animation: "ease-in-out",
             }}
           />
@@ -108,17 +139,17 @@ export default function ItemDetailsPage(props) {
             </h5>
           </div>
           <div className="py-3">
-            <button type="button" className="buyBtn btn btn-warning" onClick={buy}>
+            <button type="button" className="buyBtn btn btn-success" onClick={buy}>
               <strong>Buy</strong>
             </button>
-            <button type="button" className="addCartBtn btn btn-warning" onClick={addToCart} style={{marginLeft:'1rem', width:'120px'}}>
+            <button type="button" className="addCartBtn btn btn-warning" onClick={addToCart}>
               <strong>Add to Cart</strong>
             </button>
           </div>  
         </div>
       </div>
-      <div className="py-5">
-        <h3 className="text-center py-3">
+      <div>
+        <h3 className="text-center py-5">
           <b>—— RELATED ITEMS ——</b>
         </h3>
         <SectionCarousel data={relatedCouroselData}/>

@@ -18,15 +18,36 @@ export default function Checkout(props) {
 
     useEffect(()=>{
         const fetchUser = async ()=>{
-            const response = await axios.get(`http://localhost:8080/users/getUserByUsername/${localStorage.getItem("username")}`);
-            setUser(response.data);
+          try {
+            const response = await axios.get("http://localhost:8080/users/getUserByUsername",
+              {
+                headers: {
+                  Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+              });
+              setUser(response.data);  
+          } catch (error) {
+            if(error.response.status === 401)
+            {
+              navigate("/notAuthorized");
+            }
+            else{
+              console.log("error in checkout: ", error);
+            }
+          }
+        
         }
         fetchUser();
-    },[])
+    },[navigate])
 
     const updateAddress = async (e) =>{
       e.preventDefault();
-      const response = await axios.put(`http://localhost:8080/users/updateUser/${localStorage.getItem("username")}`, {address: address, city: city, pincode: parseInt(pincode) , state: state});
+      const response = await axios.put(`http://localhost:8080/users/updateUser`, {address: address, city: city, pincode: parseInt(pincode) , state: state},
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
       console.log(response.data);
       setUser(response.data);
 
@@ -40,7 +61,12 @@ export default function Checkout(props) {
 
     const placeOrder = async () => {
       try {
-        const response = await axios.post(`http://localhost:8080/order/createOrder/${localStorage.getItem('username')}`);
+        const response = await axios.post(`http://localhost:8080/order/createOrder`,{},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         const orderDetails = response.data;
         console.log(orderDetails);
         navigate('/OrderPlaced',{state : {orderDetails}});
@@ -71,7 +97,7 @@ export default function Checkout(props) {
                 <input className="updateAddInput" type="text" placeholder="city" value={city} style={{width:'30rem', height:'3rem',borderRadius:10}} onChange={(e)=>setCity(e.target.value)} required></input>
                 <input className="updateAddInput" type="text" placeholder="pincode" value={pincode} style={{width:'30rem', height:'3rem',borderRadius:10}} onChange={(e)=>setPincode(e.target.value)} required></input>
                 <input className="updateAddInput" type="text" placeholder="state" value={state} style={{width:'30rem', height:'3rem',borderRadius:10}} onChange={(e)=>setState(e.target.value)} required></input><br/>
-                <button type="submit" className="btn btn-success" style={{width:'5rem', borderRadius:20, marginTop:'1rem'}}>Update</button>
+                <button type="submit" className="upadateBtn btn btn-success">Update</button>
             </form>
 
             </div>
@@ -98,7 +124,7 @@ export default function Checkout(props) {
           </div>
           
           <div style={{display:'flex',justifyContent:'center',padding:'1rem'}}>
-          <button className="btn btn-success" style={{width:'7rem', borderRadius:20}} onClick={()=>placeOrder()} disabled={totalCartAmt === 0 || user.address === null}>Place Order</button>
+          <button className="placeOrderBtn btn btn-success" onClick={()=>placeOrder()} disabled={totalCartAmt === 0 || user.address === null}>Place Order</button>
           </div>
           </div>
       </div>

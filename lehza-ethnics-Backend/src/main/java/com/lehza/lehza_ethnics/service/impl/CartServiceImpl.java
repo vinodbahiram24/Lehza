@@ -17,6 +17,8 @@ import com.lehza.lehza_ethnics.repository.ProductsRepository;
 import com.lehza.lehza_ethnics.repository.UsersRepository;
 import com.lehza.lehza_ethnics.service.CartService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Service
 public class CartServiceImpl implements CartService {
 	
@@ -31,13 +33,18 @@ public class CartServiceImpl implements CartService {
 	
 	@Autowired
 	UsersRepository userRepo;
+	
+	@Autowired
+	JWTService jwtService;
 
 	@Override
-	public Cart addCart(Cart cart, String username)
+	public Cart addCart(Cart cart, HttpServletRequest request)
 	{
+		String username = jwtService.extractUserName(request.getHeader("Authorization").substring(7));
+		
 	    if(cartRepo.getCartByUsername(username)!=null && cartRepo.getCartByProduct(cart.getProduct().getProdId())!=null)
 	    {
-	    	Cart existingCart = updateQty(username, cart.getQuantity(),cart.getProduct().getProdId());
+	    	Cart existingCart = updateQty(request, cart.getQuantity(),cart.getProduct().getProdId());
 	    	return existingCart;
 	    }
 	    else	
@@ -55,8 +62,9 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public Cart updateQty(String username, Integer qty, Integer prodId) 
+	public Cart updateQty(HttpServletRequest request, Integer qty, Integer prodId) 
 	{
+		String username = jwtService.extractUserName(request.getHeader("Authorization").substring(7));
 		Cart existingCart = cartRepo.getCartByUsernameAndProd(username, prodId);
 		existingCart.setQuantity(qty);
 		existingCart.setTotalAmount(existingCart.getProduct().getPrice()*existingCart.getQuantity());
@@ -64,16 +72,18 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public String deleteCart(String username, Integer prodId) 
+	public String deleteCart(HttpServletRequest request, Integer prodId) 
 	{
+		String username = jwtService.extractUserName(request.getHeader("Authorization").substring(7));
 		Cart existingCart = cartRepo.getCartByUsernameAndProd(username,prodId);
 		cartRepo.delete(existingCart);
 		return "Cart Deleted!";
 	}
 
 	@Override
-	public List<CartDto> getAllByUsername(String username) 
+	public List<CartDto> getAllByUsername(HttpServletRequest request) 
 	{
+		String username = jwtService.extractUserName(request.getHeader("Authorization").substring(7));
 		return cartRepo.getCartByUsername(username).stream().map((e)-> cartMapper.cartToDto(e)).collect(Collectors.toList());
 	}
 	

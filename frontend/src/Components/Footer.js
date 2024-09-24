@@ -17,7 +17,7 @@ export default function Footer() {
           <p>
             <i className="bi bi-geo-alt-fill">
               {" "}
-              41, Second Floor, J.M Road, Near Deccan Mall, Pune, Maharshtra 411004
+              41, Second Floor, J.M Road, Near Deccan Mall, Pune, Maharshtra, India 411004
             </i>
           </p>
           <p>

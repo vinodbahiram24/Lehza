@@ -1,6 +1,29 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 export default function Navbar(props) {
+
+  const [user, setUser] = useState({});
+
+  useEffect(()=>{
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/users/getUserByUsername", 
+          {
+            headers:{
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+          }
+        );
+        setUser(response.data);
+      } catch (error) {
+        console.log("error in navbar: ", error);
+      }
+
+    } ; fetchUser();
+
+  },[]);
+
   return (
     <nav
       className="navbar navbar-expand-lg"
@@ -132,9 +155,9 @@ export default function Navbar(props) {
                 href="/"
                 role="button"
                 data-bs-toggle="dropdown"
-                aria-expanded="false"
+                aria-expanded="true"
               >
-              {localStorage.getItem("username")}
+              {user.username ? user.username : "login"}
               </a>
               <ul
                 className="dropdown-menu"

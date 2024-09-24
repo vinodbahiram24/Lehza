@@ -13,7 +13,8 @@
 }
 
 .signUp{
-    background-color: #9a8100;
+    /* background-color: #9a8100; */
+    background: linear-gradient(to right,#9a8100, gray);
     display: flex;
     justify-content: center;
     text-align: center;
@@ -23,7 +24,7 @@
     padding: 5rem;
     border-top-left-radius: 20%;
     border-bottom-left-radius: 20%;
-    opacity: 80%;
+    opacity: 85%;
 }
 
 .signIn{
@@ -37,7 +38,7 @@
     padding: 5rem;
     border-top-right-radius: 20%;
     border-bottom-right-radius: 20%;
-    opacity: 80%;
+    opacity: 85%;
 }
 
 .signInInput{
@@ -51,24 +52,26 @@
 
 .headText{
     color: #000000 ;
-    font-family: 'Times New Roman', Times, serif;
     padding-bottom: 1.5rem;
 }
 
 .signInBtn{
     height: 40px;
-    width: 100px;
+    width: 150px;
     margin: 20px;
-    background-color: black ;
+    background: linear-gradient(to right, black, gray) ;
     color: whitesmoke;
     cursor: pointer;
     border: none;
     font-family: 'Times New Roman', Times, serif;
     border-radius: 10rem;
+    transition: all 0.5s;
 
     &:hover{
         box-shadow: 0px 5px 10px rgb(63, 61, 61);
-        background-color: #00669a ;
+        background: linear-gradient(to right, #00669a, gray) ;
+        font-weight: bold;
+        letter-spacing: 4px;
     }
 
     &:active{
@@ -80,4 +83,12 @@
     font-family: monospace;
     font-weight: bold;
     color: #9a3400 ;
+}
+
+.forgotPasswordLink{
+    color: #000000;
+    &:hover{
+        color: white;
+        letter-spacing: 1px;
+    }
 }

@@ -18,6 +18,8 @@ import com.lehza.lehza_ethnics.entities.Orders;
 import com.lehza.lehza_ethnics.mapper.OrdersMapper;
 import com.lehza.lehza_ethnics.service.OrderService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/order")
@@ -29,10 +31,10 @@ public class OrderController {
 	@Autowired
 	OrdersMapper orderMapper;
 	
-	@GetMapping("/getOrdersByUser/{username}")
-	public ResponseEntity<List<OrdersDto>> getOrdersByUser(@PathVariable String username)
+	@GetMapping("/getOrdersByUser")
+	public ResponseEntity<List<OrdersDto>> getOrdersByUser(HttpServletRequest request)
 	{
-		return new ResponseEntity<>(orderService.getOrderByUser(username), HttpStatus.OK);
+		return new ResponseEntity<>(orderService.getOrderByUser(request), HttpStatus.OK);
 	}
 	
 	@GetMapping("/getAllOrders")
@@ -47,11 +49,11 @@ public class OrderController {
 		return new ResponseEntity<>(orderService.getOrderedProducts(), HttpStatus.OK);
 	}
 	
-	@PostMapping("/createOrder/{username}")
-	public ResponseEntity<List<OrdersDto>> createOrder(@PathVariable String username)
+	@PostMapping("/createOrder")
+	public ResponseEntity<List<OrdersDto>> createOrder(HttpServletRequest request)
 	{
 		
-		   List<OrdersDto> responseOrder = orderService.createOrder(username);
+		   List<OrdersDto> responseOrder = orderService.createOrder(request);
 		   return new ResponseEntity<>(responseOrder,HttpStatus.CREATED);
 	   
 	}

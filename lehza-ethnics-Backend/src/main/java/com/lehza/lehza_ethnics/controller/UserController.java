@@ -18,6 +18,8 @@ import com.lehza.lehza_ethnics.entities.Users;
 import com.lehza.lehza_ethnics.mapper.UsersMapper;
 import com.lehza.lehza_ethnics.service.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/users")
@@ -29,39 +31,35 @@ public class UserController {
 	@Autowired
 	UsersMapper usersMapper;
 
-	@GetMapping("/getUserByUsername/{Username}")
-	public Users getUserByUsername(@PathVariable String Username)
+	@GetMapping("/getUserByUsername")
+	public Users getUserByUsername(HttpServletRequest request)
 	{
-		return userService.getUserByUsername(Username); 
+		return userService.getUserByUsername(request); 
 	}
 	
 	@PostMapping("/register")
-	public ResponseEntity<?> createUser(@RequestBody Users user)
+	public ResponseEntity<?> createUser(@RequestBody UsersDto usersDto)
 	{
-		UsersDto usersDto = usersMapper.usersToDto(user);
-		if(userService.checkEmailandUsername(usersDto.getEmail(),usersDto.getUsername()) != null)
+		if(userService.checkEmailandUsername(usersDto.getEmail(),usersDto.getUsername()))
 		{
-			return new ResponseEntity<>("User Already Exists!!", HttpStatus.CONFLICT);
+			return new ResponseEntity<>("UserName or Email Already Exists!!", HttpStatus.CONFLICT);
 		}
 		return new ResponseEntity<>(userService.createUser(usersDto),HttpStatus.OK);
 	}
 	
-	@PostMapping("/auth")
+	@PostMapping("/login")
 	public ResponseEntity<String> authUser(@RequestBody Users user)
 	{
-		String token = userService.authUser(user);
-		if(token == "AUTHORIZED")
-		return new ResponseEntity<>("AUTHORIZED", HttpStatus.OK);
-		else
-		return new ResponseEntity<>("NOT AUTHORIZED", HttpStatus.OK);
-			
+		String token = userService.authUser(user);		
+		return new ResponseEntity<>(token , HttpStatus.OK);
+				
 	}
 	
-	@PutMapping("/updateUser/{username}")
-	public UsersDto updateUser(@RequestBody Users user, @PathVariable String username)
+	@PutMapping("/updateUser")
+	public UsersDto updateUser(@RequestBody Users user, HttpServletRequest request)
 	{
 		UsersDto usersDto = usersMapper.usersToDto(user);
-		return userService.updateUserByUsername(usersDto, username);
+		return userService.updateUserByUsername(usersDto, request);
 	}
 	
 	@DeleteMapping("/deleteUser/{id}")

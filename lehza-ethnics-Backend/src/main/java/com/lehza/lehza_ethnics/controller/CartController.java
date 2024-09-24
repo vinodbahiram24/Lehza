@@ -20,6 +20,8 @@ import com.lehza.lehza_ethnics.entities.Cart;
 import com.lehza.lehza_ethnics.mapper.CartMapper;
 import com.lehza.lehza_ethnics.service.CartService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/cart")
@@ -31,16 +33,16 @@ public class CartController {
 	@Autowired
 	CartService cartService;
 	
-	@GetMapping("/getAllCart/{username}")
-	public ResponseEntity<List<CartDto>> getAllCart(@PathVariable String username)
+	@GetMapping("/getAllCart")
+	public ResponseEntity<List<CartDto>> getAllCart(HttpServletRequest request)
 	{
-		return new ResponseEntity<>(cartService.getAllByUsername(username),HttpStatus.OK);
+		return new ResponseEntity<>(cartService.getAllByUsername(request),HttpStatus.OK);
 	}
 	
-	@PostMapping("/addCart/{username}")
-	public ResponseEntity<CartDto> addCart(@RequestBody CartDto cartDto, @PathVariable String username){
+	@PostMapping("/addCart")
+	public ResponseEntity<CartDto> addCart(@RequestBody CartDto cartDto, HttpServletRequest request){
 	    Cart cart = cartMapper.dtoToCart(cartDto);
-	    Cart newCart = cartService.addCart(cart, username);
+	    Cart newCart = cartService.addCart(cart, request);
 	    
 	    if (newCart == null) {
 	        return new ResponseEntity<>(HttpStatus.BAD_REQUEST); // or handle the error appropriately
@@ -50,16 +52,16 @@ public class CartController {
 	    return new ResponseEntity<>(responseDto, HttpStatus.CREATED); // Or HttpStatus.OK based on the logic
 	}
 	
-	@PutMapping("/updateQty/{username}/{qty}/{prodId}")
-	public ResponseEntity<CartDto> updateQty(@PathVariable String username,@PathVariable Integer qty,@PathVariable Integer prodId )
+	@PutMapping("/updateQty/{qty}/{prodId}")
+	public ResponseEntity<CartDto> updateQty(HttpServletRequest request,@PathVariable Integer qty,@PathVariable Integer prodId )
 	{
-		return new ResponseEntity<>(cartMapper.cartToDto(cartService.updateQty(username, qty, prodId)),HttpStatus.OK);
+		return new ResponseEntity<>(cartMapper.cartToDto(cartService.updateQty(request, qty, prodId)),HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/deleteCart/{username}/{prodId}")
-	public ResponseEntity<String> deleteCart(@PathVariable String username, @PathVariable Integer prodId)
+	@DeleteMapping("/deleteCart/{prodId}")
+	public ResponseEntity<String> deleteCart(HttpServletRequest request, @PathVariable Integer prodId)
 	{
-		return new ResponseEntity<>(cartService.deleteCart(username, prodId),HttpStatus.OK);
+		return new ResponseEntity<>(cartService.deleteCart(request, prodId),HttpStatus.OK);
 	}
 
 }

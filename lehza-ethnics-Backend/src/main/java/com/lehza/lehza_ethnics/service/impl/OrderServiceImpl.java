@@ -19,6 +19,8 @@ import com.lehza.lehza_ethnics.repository.OrdersRepository;
 import com.lehza.lehza_ethnics.repository.ProductsRepository;
 import com.lehza.lehza_ethnics.service.OrderService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Service
 public class OrderServiceImpl implements OrderService {
 	
@@ -40,10 +42,14 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	ProductsRepository productsRepo;
 	
+	@Autowired
+	JWTService jwtService;
+	
 	
 	@Override
-	public List<OrdersDto> getOrderByUser(String username) 
+	public List<OrdersDto> getOrderByUser(HttpServletRequest request) 
 	{
+		String username = jwtService.extractUserName(request.getHeader("Authorization").substring(7));
 		List<OrdersDto> orderDtoList = orderRepo.getOrdersByUsername(username).stream().map((e)-> orderMapper.ordersToDto(e)).collect(Collectors.toList());
 		return orderDtoList;
 	}
@@ -63,8 +69,9 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<OrdersDto> createOrder( String username)
+	public List<OrdersDto> createOrder(HttpServletRequest request)
 	{
+		String username = jwtService.extractUserName(request.getHeader("Authorization").substring(7));
 		List<Cart> cartList = cartRepo.getCartByUsername(username);
 		
 		List<OrdersDto> orderListDto = new ArrayList<>();

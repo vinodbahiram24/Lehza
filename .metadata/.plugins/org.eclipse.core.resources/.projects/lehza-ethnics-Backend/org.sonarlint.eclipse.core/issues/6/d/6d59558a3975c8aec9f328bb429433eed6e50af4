@@ -1,17 +1,21 @@
 
 Ÿ
-java:S1488("dImmediately return this expression instead of assigning it to the temporary variable "existingCart".8ûÒ”ø™2b 5bbd335a2ef823cf55efbedbd0342f2bh
+java:S1488/"dImmediately return this expression instead of assigning it to the temporary variable "existingCart".8ûÒ”ø™2b fd2772b339bb1f35ba8d730cc429a2d7h
 }
-java:S6813"BRemove this field injection and use constructor injection instead.8ªåêû—2b 0132ec8cee01c5dd244e1a60fe6448a1h
-}
-java:S6813"BRemove this field injection and use constructor injection instead.8ªåêû—2b 0132ec8cee01c5dd244e1a60fe6448a1h
+java:S6813"BRemove this field injection and use constructor injection instead.8­ËğË™2b 0132ec8cee01c5dd244e1a60fe6448a1h
 j
-java:S1611M"/Remove the parentheses around the "e" parameter8­ËğË™2b 84c40473414caf2ed4a7b1283e48bbf4h
+java:S1611W"/Remove the parentheses around the "e" parameter8­ËğË™2b 84c40473414caf2ed4a7b1283e48bbf4h
 }
-java:S6813 "BRemove this field injection and use constructor injection instead.8­ËğË™2b 0132ec8cee01c5dd244e1a60fe6448a1h
+java:S6813"BRemove this field injection and use constructor injection instead.8·® ş—2b 0132ec8cee01c5dd244e1a60fe6448a1h
 
-java:S6204M"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'8­ËğË™2b f31c9542f92d797a57d6f9bafca179cdh
+java:S6204W"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'8­ËğË™2b f31c9542f92d797a57d6f9bafca179cdh
 }
-java:S6813"BRemove this field injection and use constructor injection instead.8·® ş—2b 0132ec8cee01c5dd244e1a60fe6448a1h
+java:S6813"BRemove this field injection and use constructor injection instead.8ªåêû—2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813""BRemove this field injection and use constructor injection instead.8ªåêû—2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813%"BRemove this field injection and use constructor injection instead.8Ò¿µÈ¡2b 0132ec8cee01c5dd244e1a60fe6448a1h
+‰
+java:S1192+"NDefine a constant instead of duplicating this literal "Authorization" 4 times.8÷±²É¡2b 79dc52537a349682e08481ecce1101a6h
 
-java:S1128"URemove this unused import 'org.springframework.transaction.annotation.Transactional'.8…÷‹ø™2b c85f0c7a935a9cf7ce51327b60ddd535h
+java:S1128"URemove this unused import 'org.springframework.transaction.annotation.Transactional'.8÷±²É¡2b c85f0c7a935a9cf7ce51327b60ddd535h

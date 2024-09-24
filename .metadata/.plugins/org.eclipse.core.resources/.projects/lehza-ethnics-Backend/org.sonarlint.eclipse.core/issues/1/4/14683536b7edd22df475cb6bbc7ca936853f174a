@@ -1,14 +1,18 @@
 
-ã	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.8˝ìÓ ñ2b f6039d44b29456b20f8f373155ae4973h
 }
-java:S6813"BRemove this field injection and use constructor injection instead.8¢ÇÏ“ñ2b 0132ec8cee01c5dd244e1a60fe6448a1h
-}
-java:S6813"BRemove this field injection and use constructor injection instead.8˙ÂÎÃñ2b 0132ec8cee01c5dd244e1a60fe6448a1h
-ç
-java:S3776X"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.8¨±¨÷ü2b 30f330e89f25d0042db4995172876382h
-ë
-java:S2159h"VRemove this call to "equals"; comparisons between unrelated types always return false.8ÔΩˆŒü2b 51c3f59625962b899c03595d6cdfb284h
+java:S6813"BRemove this field injection and use constructor injection instead.8≠”üô°2b 0132ec8cee01c5dd244e1a60fe6448a1h
 ó
-java:S1488"\Immediately return this expression instead of assigning it to the temporary variable "user".8¨±¨÷ü2b 232dbcc61fce904a2a76bc70e7edd019h
+java:S1488*"\Immediately return this expression instead of assigning it to the temporary variable "user".8¨±¨÷ü2b ddcddc95a711059ddc59de083710f6a6h
 }
-java:S6813"BRemove this field injection and use constructor injection instead.8Á∏ı ñ2b 0132ec8cee01c5dd244e1a60fe6448a1h
+java:S6813"BRemove this field injection and use constructor injection instead.8£•≥ô°2b 0132ec8cee01c5dd244e1a60fe6448a1h
+v	java:S125N"<This block of commented-out lines of code should be removed.8≠”üô°2b f95b70fdc3088560732a5ac135644506h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8Á∏ı ñ2b 0132ec8cee01c5dd244e1a60fe6448a1h
+í
+java:S2159Ü"VRemove this call to "equals"; comparisons between unrelated types always return false.8ÔΩˆŒü2b 51c3f59625962b899c03595d6cdfb284h
+ç
+java:S3776t"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.8¨±¨÷ü2b 30f330e89f25d0042db4995172876382h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8¢ÇÏ“ñ2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813!"BRemove this field injection and use constructor injection instead.8˙ÂÎÃñ2b 0132ec8cee01c5dd244e1a60fe6448a1h

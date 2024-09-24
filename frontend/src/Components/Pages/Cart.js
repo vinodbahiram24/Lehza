@@ -12,7 +12,12 @@ export default function Cart(props) {
   useEffect(() => {
     const fetchCartData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/cart/getAllCart/${localStorage.getItem("username")}`);
+        const response = await axios.get(`http://localhost:8080/cart/getAllCart`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         setCartData(response.data);
 
         // Calculate the total amount
@@ -20,16 +25,28 @@ export default function Cart(props) {
         response.data.forEach(item => {total += item.totalAmount;});
         setTotalCartAmount(total);
       } catch (error) {
-        console.log("error while fetching cart: ", error);
+        if(error.response.status === 401)
+          {
+            navigate("/notAuthorized");
+          }
+          else{
+            console.log("error while fetching cart: ", error);
+          }
+       
       }
     };
     fetchCartData();
-  },[]);
+  },[navigate]);
 
   const handleDelete = async (prodId) => {
     if (window.confirm("Are you sure you want to remove this item from the cart?")) {
       try {
-        await axios.delete(`http://localhost:8080/cart/deleteCart/${localStorage.getItem("username")}/${prodId}`);
+        await axios.delete(`http://localhost:8080/cart/deleteCart/${prodId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         // Update cartData and totalCartAmt after deletion
         setCartData((prevData) => prevData.filter((item) => item.product.prodId !== prodId));
         setTotalCartAmount(totalCartAmt - cartData.find(item => item.product.prodId === prodId).totalAmount);
@@ -39,7 +56,7 @@ export default function Cart(props) {
     }
   };
 
-  const handleUpdate =(quantity,prodId)=>{
+  const handleUpdate =async(quantity,prodId)=>{
     try {
         if(quantity===0)
         {
@@ -47,7 +64,12 @@ export default function Cart(props) {
         }
         else
         {
-            axios.put(`http://localhost:8080/cart/updateQty/${localStorage.getItem("username")}/${quantity}/${prodId}`);
+          await axios.put(`http://localhost:8080/cart/updateQty/${quantity}/${prodId}`,{},
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            });
             setCartData((prevData)=>prevData.map((item)=> item.product.prodId === prodId ? {...item,quantity} : item));
             if((cartData.find((item)=>item.product.prodId === prodId).quantity > quantity))
             {
@@ -109,8 +131,8 @@ export default function Cart(props) {
                 <React.Fragment key={element.cartId}>
                   <div className="row py-4 px-4">
                     {/* productDetails */}
-                    <div className="col-md-4" style={{ height: "9rem", width: "9rem" }}>
-                      <img className="img-fluid" src={element.product.image} alt="N/A" />
+                    <div className="col-md-4" style={{ height: "9rem", width: "9rem"}}>
+                      <img className="img-fluid" src={element.product.image} alt="N/A" style={{borderRadius:50}}/>
                     </div>
                     <div className="col-md-8" style={{ height: "9rem" }}>
                       <div>
@@ -118,9 +140,9 @@ export default function Cart(props) {
                       </div>
   
                       <div>
-                      <i class="bi bi-dash-circle" onClick={()=>handleUpdate(element.quantity-1,element.product.prodId)}></i>
-                      <input className="text-center" type="text" min={0} max={10} style={{height:'2rem', width:'2rem', borderRadius:15, margin:'5px', opacity:'60%'}} value={element.quantity}></input>
-                      <i class="bi bi-plus-circle" onClick={()=>handleUpdate(element.quantity+1,element.product.prodId)}></i>
+                      <i className="bi bi-dash-circle" onClick={()=>handleUpdate(element.quantity-1,element.product.prodId)}></i>
+                      <input className="text-center" type="text" min={0} max={10} style={{height:'2rem', width:'2rem', borderRadius:15, margin:'5px', opacity:'60%'}} value={element.quantity} readOnly></input>
+                      <i className="bi bi-plus-circle" onClick={()=>handleUpdate(element.quantity+1,element.product.prodId)}></i>
                       </div>
   
                       {/* <div>Quantity: {element.quantity}</div> */}

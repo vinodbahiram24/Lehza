@@ -14,7 +14,6 @@ const items = MainCarouselData.map((item)=> <img className='img-fluid' role='pre
         animationDuration={1500}
         animationType="slide"
         infinite
-        //disableDotsControls
         disableButtonsControls
         items={items}
     />

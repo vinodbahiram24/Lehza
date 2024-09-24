@@ -1,6 +1,9 @@
 package com.lehza.lehza_ethnics.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +12,8 @@ import com.lehza.lehza_ethnics.entities.Users;
 import com.lehza.lehza_ethnics.mapper.UsersMapper;
 import com.lehza.lehza_ethnics.repository.UsersRepository;
 import com.lehza.lehza_ethnics.service.UserService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -21,13 +26,20 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private JWTService jwtService;
 
 	@Override
-	public Users getUserByUsername(String Username) 
+	public Users getUserByUsername(HttpServletRequest request) 
 	{
+		String username = jwtService.extractUserName(request.getHeader("Authorization").substring(7));
 		
 		try {
-			Users user = userRepo.getUserByUsername(Username);
+			Users user = userRepo.getUserByUsername(username);
 			return user ;
 		} catch (Exception e) {
 			
@@ -61,32 +73,50 @@ public class UserServiceImpl implements UserService{
 				
 	}
 	
+//	@Override
+//	public String authUser(Users user)
+//	{
+//		try 
+//		{	
+//			Users existingUser = userRepo.getUserByUsername(user.getUsername());
+//			if(existingUser != null && passwordEncoder.matches(user.getPassword(), existingUser.getPassword()))
+//			{
+//				return "AUTHORIZED";
+//			}
+//			else
+//			{
+//				return "NOT AUTHORIZED";
+//			}	
+//				
+//		} 
+//		catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+//			
+//	}
+	
 	@Override
 	public String authUser(Users user)
 	{
-		try 
-		{	
-			Users existingUser = userRepo.getUserByUsername(user.getUsername());
-			if(existingUser != null && passwordEncoder.matches(user.getPassword(), existingUser.getPassword()))
-			{
-				return "AUTHORIZED";
-			}
-			else
-			{
-				return "NOT AUTHORIZED";
-			}	
-				
-		} 
-		catch (Exception e) {
-			e.printStackTrace();
+		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+		
+		if(authentication.isAuthenticated())
+		{
+			return jwtService.generateToken(user.getUsername());
 		}
-		return null;
+		
+		return "UNAUTHORIZED";
 			
 	}
+	
+	
 
 	@Override
-	public UsersDto updateUserByUsername(UsersDto usersDto, String username) 
+	public UsersDto updateUserByUsername(UsersDto usersDto, HttpServletRequest request) 
 	{
+		String username = jwtService.extractUserName(request.getHeader("Authorization").substring(7));
+		
 		UsersDto existingUser = userMapper.usersToDto(userRepo.getUserByUsername(username));
 	
 		if (usersDto.getAddress() != null && !usersDto.getAddress().equals("") ) {
@@ -137,9 +167,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public Users checkEmailandUsername(String email, String username) {
+	public Boolean checkEmailandUsername(String email, String username) {
 
-		return userRepo.existsByEmail(email, username);
+		return userRepo.existsByEmailAndUsername(email, username);
 	}
 	
 	
