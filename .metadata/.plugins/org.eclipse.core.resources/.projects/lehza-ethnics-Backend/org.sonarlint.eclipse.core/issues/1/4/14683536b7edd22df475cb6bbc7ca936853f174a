@@ -1,18 +1,20 @@
 
 }
-java:S6813"BRemove this field injection and use constructor injection instead.8­ÓŸ™¡2b 0132ec8cee01c5dd244e1a60fe6448a1h
-—
-java:S1488*"\Immediately return this expression instead of assigning it to the temporary variable "user".8¬±¬ÖŸ2b ddcddc95a711059ddc59de083710f6a6h
-}
-java:S6813"BRemove this field injection and use constructor injection instead.8£¥³™¡2b 0132ec8cee01c5dd244e1a60fe6448a1h
-v	java:S125N"<This block of commented-out lines of code should be removed.8­ÓŸ™¡2b f95b70fdc3088560732a5ac135644506h
-}
-java:S6813"BRemove this field injection and use constructor injection instead.8ç¸õÊ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
-’
-java:S2159†"VRemove this call to "equals"; comparisons between unrelated types always return false.8ï½öÎŸ2b 51c3f59625962b899c03595d6cdfb284h
+java:S6813"BRemove this field injection and use constructor injection instead.8úåëÌ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
 
-java:S3776t"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.8¬±¬ÖŸ2b 30f330e89f25d0042db4995172876382h
+java:S3776z"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.8¬±¬ÖŸ2b 30f330e89f25d0042db4995172876382h
 }
-java:S6813"BRemove this field injection and use constructor injection instead.8¢‚ìÒ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
+java:S1126³"AReplace this if-then-else statement by a single return statement.8¯òÕî¢2b 39c8942e1038872a822c0dc75eedbde3h
 }
-java:S6813!"BRemove this field injection and use constructor injection instead.8úåëÌ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
+java:S6813""BRemove this field injection and use constructor injection instead.8ç¸õÊ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8£¥³™¡2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8¢‚ìÒ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
+—
+java:S1488+"\Immediately return this expression instead of assigning it to the temporary variable "user".8¬±¬ÖŸ2b ddcddc95a711059ddc59de083710f6a6h
+v	java:S125O"<This block of commented-out lines of code should be removed.8­ÓŸ™¡2b f95b70fdc3088560732a5ac135644506h
+’
+java:S2159Œ"VRemove this call to "equals"; comparisons between unrelated types always return false.8ï½öÎŸ2b 51c3f59625962b899c03595d6cdfb284h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8­ÓŸ™¡2b 0132ec8cee01c5dd244e1a60fe6448a1h

@@ -139,10 +139,10 @@ export default function ItemDetailsPage(props) {
             </h5>
           </div>
           <div className="py-3">
-            <button type="button" className="buyBtn btn btn-success" onClick={buy}>
+            <button type="button" className="buyBtn" onClick={buy}>
               <strong>Buy</strong>
             </button>
-            <button type="button" className="addCartBtn btn btn-warning" onClick={addToCart}>
+            <button type="button" className="addCartBtn" onClick={addToCart}>
               <strong>Add to Cart</strong>
             </button>
           </div>  

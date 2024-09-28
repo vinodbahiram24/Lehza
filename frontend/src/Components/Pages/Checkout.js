@@ -83,30 +83,29 @@ export default function Checkout(props) {
       </div>
       {/* body */}
       <div className="row py-5 px-5">
-            <div className="col-md-9" style={{border:"1px", borderColor: 'red'}}>
-            <center><h4>Address</h4></center>
+            <div className="col-md-9">
+            <center><h3>Your Address</h3></center>
             <hr/>
-            <div className="address" style={{paddingBlock:'2rem'}}>
+            <div className="address">
             {user.address}<br/> {user.city}<br/>{user.pincode}<br/>{user.state}
             </div>
             <hr/>
             <div className="addressForm py-2 px-5">
-            <center><h5>or update address</h5></center>
+            <center><h4>or update address here</h4></center>
             <form className="text-center" onSubmit={updateAddress}>
-                <input className="updateAddInput" type="text" placeholder="address" value={address} style={{width:'30rem', height:'3rem' , borderRadius:10}} onChange={(e)=>setAddress(e.target.value)} required></input>
-                <input className="updateAddInput" type="text" placeholder="city" value={city} style={{width:'30rem', height:'3rem',borderRadius:10}} onChange={(e)=>setCity(e.target.value)} required></input>
-                <input className="updateAddInput" type="text" placeholder="pincode" value={pincode} style={{width:'30rem', height:'3rem',borderRadius:10}} onChange={(e)=>setPincode(e.target.value)} required></input>
-                <input className="updateAddInput" type="text" placeholder="state" value={state} style={{width:'30rem', height:'3rem',borderRadius:10}} onChange={(e)=>setState(e.target.value)} required></input><br/>
-                <button type="submit" className="upadateBtn btn btn-success">Update</button>
+                <input className="updateAddInput" type="text" placeholder="address" value={address}  onChange={(e)=>setAddress(e.target.value)} required></input>
+                <input className="updateAddInput" type="text" placeholder="city" value={city}  onChange={(e)=>setCity(e.target.value)} required></input>
+                <input className="updateAddInput" type="text" placeholder="pincode" value={pincode}  onChange={(e)=>setPincode(e.target.value)} required></input>
+                <input className="updateAddInput" type="text" placeholder="state" value={state} onChange={(e)=>setState(e.target.value)} required></input><br/>
+                <button type="submit" className="upadateBtn">Update</button>
             </form>
-
             </div>
-
             </div>
 
           <div className="col-md-3">
-          <center><h4>Price Details</h4></center>
+          <center><h3>Price Details</h3></center>
           <hr/>
+          <div className="priceDetails">
           <div className="row">
           <div className="col-md-6 py-1 ">Price</div>
           <div className="col-md-6 py-1 " style={{display:'flex', justifyContent:'right'}}>₹ {totalCartAmt ? totalCartAmt : 0}</div>
@@ -124,7 +123,8 @@ export default function Checkout(props) {
           </div>
           
           <div style={{display:'flex',justifyContent:'center',padding:'1rem'}}>
-          <button className="placeOrderBtn btn btn-success" onClick={()=>placeOrder()} disabled={totalCartAmt === 0 || user.address === null}>Place Order</button>
+          <button className="placeOrderBtn" onClick={()=>placeOrder()} disabled={totalCartAmt === 0 || user.address === null}>Place Order</button>
+          </div>
           </div>
           </div>
       </div>

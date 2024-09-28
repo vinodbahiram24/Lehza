@@ -17,6 +17,8 @@ public interface UserService {
 	
 	String authUser(Users user);
 	
+	String resetPassword(String username, String password);
+	
 	//Put
 	UsersDto updateUserByUsername(UsersDto userDto, HttpServletRequest request);
 	

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../css/signIn.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignInPage(props) {
 
@@ -11,6 +11,7 @@ export default function SignInPage(props) {
    const [signUpMobile, setSignUpMobile] = useState("");
    const [signUpPassword, setSignUpPassword] = useState("");
    const [signUpMessage, setSignUpMessage] = useState("");
+   const [showSignUp, setShowSignUp] = useState(false);
    
    // Sign-In Form State
    const [signInUsername, setSignInUsername] = useState("");
@@ -53,6 +54,10 @@ export default function SignInPage(props) {
     }
   }
 
+  const registerHereBtn = () => {
+    setShowSignUp(!showSignUp);
+  };
+
   setTimeout(() => {
     setSignUpMessage("");
     setSignInMessage("");
@@ -60,29 +65,31 @@ export default function SignInPage(props) {
   
   return (
     <div className="login">
-      <div className="row">
+      <div>
         {/* sign up */}
-        <div className="signUp col-md-4">
+        <div className="signUp" style={{ display: showSignUp ? 'block' : 'none' }}>
           <form onSubmit={handleSignUp}>
-            <h2 className="headText">New Here?</h2>
+            <p className="headText">Become a <span className="headTextSpan">Lehza </span>Member!</p>
             <input className="signInInput" id="username" value={signUpUsername} type="text" placeholder=" UserName" onChange={(e)=>setSignUpUsername(e.target.value)} required></input>
             <input className="signInInput" id="email" value={signUpEmail} type="email" placeholder=" Email" onChange={(e)=>setSignUpEmail(e.target.value)} required></input>
             <input className="signInInput" id="mobile" value={signUpMobile} type="tel" placeholder=" Mobile" onChange={(e)=>setSignUpMobile(e.target.value)} required></input>
             <input className="signInInput" id="password" value={signUpPassword} type="password" placeholder=" Password" onChange={(e)=>setSignUpPassword(e.target.value)} required></input>
-            <button className="signInBtn" type="submit">Create</button>
-            <div className="message-div"><p>{signUpMessage}</p></div>
+            <button className="signInBtn" type="submit">Sign Up</button>
           </form>
+          <div className="message-div"><p>{signUpMessage}</p></div>
+          <p className="registerHereBtnText">Already have Account?<button className="registerHereBtn" onClick={registerHereBtn}>Login Here</button></p>
         </div>
         {/* sign in */}
-        <div className="signIn col-md-4">
+        <div className="signIn" style={{display: showSignUp ? 'none' : 'block' }}>
           <form onSubmit={handleSignIn}> 
-            <h2 className="headText">Welcome back !</h2>
+            <p className="headText">Welcome Back!</p>
             <input className="signInInput" id="signInUsername" value={signInUsername} type="text" placeholder=" UserName" onChange={(e)=>setSignInUsername(e.target.value)} required></input>
             <input className="signInInput" id="signInPassword" value={signInPassword} type="password" placeholder=" Password" onChange={(e)=>setSignInPassword(e.target.value)} required></input>
             <button className="signInBtn" type="submit">Login</button><br/>
-            <a className="forgotPasswordLink" href="/">forgot password?</a>
-            <div className="message-div"><p>{signInMessage}</p></div>
           </form>
+          <Link className="forgotPasswordLink" to="/forgotPassword">forgot password?</Link>
+          <div className="message-div"><p>{signInMessage}</p></div>
+          <p className="registerHereBtnText">New User? <button className="registerHereBtn" onClick={registerHereBtn}>Register Here</button></p>
         </div>
       </div>
     </div>

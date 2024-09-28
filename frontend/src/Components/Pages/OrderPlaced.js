@@ -10,12 +10,12 @@ export default function OrderPlaced(props) {
       <div>
        <Navbar toggleMode={props.toggleMode} mode={props.mode} />
        </div>
-        {/* body */}
-      <div className='emptyCart' style={{textAlign:'center'}}>
-          <div className='py-5'>
-            <img className='img-fluid' src={checkGif} alt=""/>
+      {/* body */}
+      <div className='orderPlaced'>
+          <div>
+            <img className='img-fluid' src={checkGif} alt="" style={{paddingBottom : '2rem'}}/>
           </div>
-          <div className='container'>
+          <div>
             <h1>Order Successful..!</h1>
             <a href="/Orders"> click here to see orders</a>
           </div>

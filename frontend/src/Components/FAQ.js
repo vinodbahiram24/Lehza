@@ -2,9 +2,9 @@ import React from "react";
 
 export default function FAQ(props) {
   return (
-    <div className="container" style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
+    <div className="container" style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
       <div className="accordion accordion-flush" id="accordionFlushExample">
-        <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
+        <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
           <h2 className="accordion-header">
             <button
               className="accordion-button collapsed"
@@ -13,7 +13,7 @@ export default function FAQ(props) {
               data-bs-target="#flush-collapseOne"
               aria-expanded="false"
               aria-controls="flush-collapseOne"
-              style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
+              style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
             >
               <strong>What is Lehza?</strong>
             </button>
@@ -32,7 +32,7 @@ export default function FAQ(props) {
             </div>
           </div>
         </div>
-        <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
+        <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
           <h2 className="accordion-header">
             <button
               className="accordion-button collapsed"
@@ -41,7 +41,7 @@ export default function FAQ(props) {
               data-bs-target="#flush-collapseTwo"
               aria-expanded="false"
               aria-controls="flush-collapseTwo"
-              style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
+              style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
             >
               <strong>What products does Lehza offer?</strong>
             </button>
@@ -59,7 +59,7 @@ export default function FAQ(props) {
             </div>
           </div>
         </div>
-        <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
+        <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
           <h2 className="accordion-header">
             <button
               className="accordion-button collapsed"
@@ -68,7 +68,7 @@ export default function FAQ(props) {
               data-bs-target="#flush-collapseThree"
               aria-expanded="false"
               aria-controls="flush-collapseThree"
-              style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
+              style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
             >
               <strong>How should I care for Lehza garments?</strong>
             </button>
@@ -86,7 +86,7 @@ export default function FAQ(props) {
             </div>
           </div>
         </div>
-        <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
+        <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
           <h2 className="accordion-header">
             <button
               className="accordion-button collapsed"
@@ -95,7 +95,7 @@ export default function FAQ(props) {
               data-bs-target="#flush-collapseFour"
               aria-expanded="false"
               aria-controls="flush-collapseFour"
-              style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
+              style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
             >
               <strong>What is Lehza's return and exchange policy?</strong>
             </button>
@@ -115,7 +115,7 @@ export default function FAQ(props) {
           </div>
         </div>
 
-        <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
+        <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
           <h2 className="accordion-header">
             <button
               className="accordion-button collapsed"
@@ -124,7 +124,7 @@ export default function FAQ(props) {
               data-bs-target="#flush-collapseFive"
               aria-expanded="false"
               aria-controls="flush-collapseFive"
-              style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
+              style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
             >
               <strong>How long does it take to receive my order?</strong>
             </button>
@@ -143,7 +143,7 @@ export default function FAQ(props) {
           </div>
         </div>
 
-         <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
+         <div className="accordion-item" style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}>
           <h2 className="accordion-header">
             <button
               className="accordion-button collapsed"
@@ -152,7 +152,7 @@ export default function FAQ(props) {
               data-bs-target="#flush-collapseSix"
               aria-expanded="false"
               aria-controls="flush-collapseSix"
-              style={props.mode==='light'? {backgroundColor:'white',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
+              style={props.mode==='light'? {backgroundColor:'#e4e4e4',color:'black'}:{backgroundColor:'#36393F',color:'#9a8100'}}
             >
               <strong>How can I contact Lehza customer support?</strong>
             </button>

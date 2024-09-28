@@ -1,22 +1,22 @@
 
-n
-java:S1128"3Remove this unused import 'jakarta.servlet.Filter'.8 ¿‹¡2b 06b4a4766b5e16f0a9a13eacb65e3a86h
 œ
 java:S1128"aRemove this unused import 'org.springframework.security.crypto.password.StandardPasswordEncoder'.8³•ğ¡2b 1f9bbcc4525898979882e3d95a68236dh
-v	java:S1256"<This block of commented-out lines of code should be removed.8•¤ğÿ 2b 9d1dea9e88d877fdbc59cdf296f46025h
-˜
-java:S3305!"]Inject this field value directly into "authenticationProvider", the only method that uses it.8ò”‹€¡2b 010ac1b919b408103fdf7e3c0ac41c10h
-•
-java:S3305$"ZInject this field value directly into "securityFilterChain", the only method that uses it.8 ¿‹¡2b 6e5445b12e24dc19809988868b93c90dh
-}
-java:S6813#"BRemove this field injection and use constructor injection instead.8 ¿‹¡2b 0132ec8cee01c5dd244e1a60fe6448a1h
-œ
-java:S1128"aRemove this unused import 'org.springframework.security.provisioning.InMemoryUserDetailsManager'.8•¤ğÿ 2b e4d646af9bae316a8c5306b53b45eafah
-Š
-java:S1128"ORemove this unused import 'org.springframework.security.core.userdetails.User'.8•¤ğÿ 2b 077a18e6c4cf8f79090fdd11938eeaa7h
 }
 java:S6813 "BRemove this field injection and use constructor injection instead.8ò”‹€¡2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813#"BRemove this field injection and use constructor injection instead.8 ¿‹¡2b 0132ec8cee01c5dd244e1a60fe6448a1h
 ‘
 java:S1128"VRemove this unused import 'org.springframework.security.core.userdetails.UserDetails'.8•¤ğÿ 2b 2e43daa1aeb80903a22da48ad1ded6edh
 ”
 java:S1128"YRemove this unused import 'org.springframework.security.crypto.password.PasswordEncoder'.8³•ğ¡2b 979a92b1cb4ff77c3e517495c66e2ddeh
+œ
+java:S1128"aRemove this unused import 'org.springframework.security.provisioning.InMemoryUserDetailsManager'.8•¤ğÿ 2b e4d646af9bae316a8c5306b53b45eafah
+n
+java:S1128"3Remove this unused import 'jakarta.servlet.Filter'.8 ¿‹¡2b 06b4a4766b5e16f0a9a13eacb65e3a86h
+˜
+java:S3305!"]Inject this field value directly into "authenticationProvider", the only method that uses it.8ò”‹€¡2b 010ac1b919b408103fdf7e3c0ac41c10h
+•
+java:S3305$"ZInject this field value directly into "securityFilterChain", the only method that uses it.8 ¿‹¡2b 6e5445b12e24dc19809988868b93c90dh
+v	java:S1256"<This block of commented-out lines of code should be removed.8•¤ğÿ 2b 9d1dea9e88d877fdbc59cdf296f46025h
+Š
+java:S1128"ORemove this unused import 'org.springframework.security.core.userdetails.User'.8•¤ğÿ 2b 077a18e6c4cf8f79090fdd11938eeaa7h

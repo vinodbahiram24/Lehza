@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -97,19 +98,24 @@ public class UserServiceImpl implements UserService{
 //	}
 	
 	@Override
-	public String authUser(Users user)
-	{
-		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-		
-		if(authentication.isAuthenticated())
-		{
-			return jwtService.generateToken(user.getUsername());
-		}
-		
-		return "UNAUTHORIZED";
-			
+	public String authUser(Users user) {
+	    try {
+	        Authentication authentication = authenticationManager.authenticate(
+	            new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
+	        );
+	        
+	        if (authentication.isAuthenticated()) {
+	            return jwtService.generateToken(user.getUsername());
+	        }
+	        
+	    } catch (AuthenticationException ex) {
+	        
+	        return "UNAUTHORIZED"; 
+	    }
+	 
+	    return "UNAUTHORIZED";
 	}
-	
+
 	
 
 	@Override
@@ -169,7 +175,19 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public Boolean checkEmailandUsername(String email, String username) {
 
-		return userRepo.existsByEmailAndUsername(email, username);
+		Users user = userRepo.existsByEmailAndUsername(email, username);
+		if(user != null){
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public String resetPassword(String username, String password) {
+		Users user = userRepo.getUserByUsername(username);
+		user.setPassword(passwordEncoder.encode(password));
+		userRepo.save(user);
+		return "Password Updated";
 	}
 	
 	

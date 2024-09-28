@@ -37,23 +37,23 @@ export default function ItemsDisplayPage(props) {
   return (
     <>
     <div><Navbar toggleMode={props.toggleMode} mode={props.mode} /></div>
-      <header>
+      <div>
         <img className="img-fluid" src={props.coverImg} alt="N/A.." />
-      </header>
+      </div>
 
       <div className="row">
         {/* Filter Section */}
         <div className="col-md-3 px-5 py-5">
           <h4>Color</h4>
           <hr />
-          <p>Filters upcoming..</p>
+          <span>Filters upcoming..</span>
         </div>
         {/* Item Display Section */}
         <div className="col-md-8 py-5">
           <div className="row">
             {products.map((element) => {
               return (
-                <div className="col-md-4" key={element.prodId}>
+                <div className="col" key={element.prodId}>
                   <ItemCard
                     prodId={element.prodId}
                     brand={element.brand}

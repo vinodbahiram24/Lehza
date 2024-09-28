@@ -20,6 +20,6 @@ public interface UsersRepository extends JpaRepository<Users, Integer> {
 	Users getById(@Param("id") Integer id);
 
 	@Query(value = "select * from Users where email= :email and username= :username" , nativeQuery = true)
-	Boolean existsByEmailAndUsername(@Param("email") String email, @Param("username") String username);
+	Users existsByEmailAndUsername(@Param("email") String email, @Param("username") String username);
 
 }

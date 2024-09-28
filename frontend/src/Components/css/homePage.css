@@ -24,7 +24,7 @@
 
 .card.home{
     width: 15rem; 
-    background-color:#9a8100;
+    background: linear-gradient(to right,#e7c82b ,#9a8100);
     border-radius: 40px; 
     border: none;
     transition: all 0.5s;

@@ -45,7 +45,7 @@ a{
 }
 
 body.light-mode {
-  background-color: red;
+  background-color: #e4e4e4;
   color: black;
 }
 
@@ -72,15 +72,60 @@ body.dark-mode {
   }
 }
 
-.updateAddInput{
+.address {
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.addressForm {
+  padding: 2rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.updateAddInput {
   margin: 5px;
-  background-color: lightgray;
+  background: linear-gradient(to right, whitesmoke, rgba(211, 211, 211, 0.685));
+  opacity: 0.9; 
   border: none;
-  border-radius: 1rem;
+  border-radius: 10px;
+  padding: 0.5rem;
+  width: 40%;
+}
+
+.priceDetails {
+  padding: 0.5rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.orderPlaced{
+  height: 350px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem;
+  margin: auto;
+  margin-top: 3rem;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+  a{
+    color: gray;
+    &:hover{
+      color: #cdac00;
+      text-decoration: underline;
+    }
+  }
+  
 }
 
 .card.displayPage{
-  background-color: #656a76;
+  width: 15rem;
+  background: linear-gradient(to right, #656a76,#36393F);
   border:none;
   border-radius: 30px;
   transition: all 0.5s;
@@ -127,6 +172,9 @@ body.dark-mode {
 
 .buyBtn{
   width:5rem;
+  padding: 7px;
+  background: linear-gradient(to right, #00b09b, #96c93d);
+  border: none;
   border-radius: 20px;
   transition: all 0.5s;
   &:hover{
@@ -135,9 +183,12 @@ body.dark-mode {
 }
 
 .addCartBtn{
-  margin-left: 1rem; 
-  width: 120px;
+  margin-left: 1rem;
+  padding: 7px; 
+  width: 8rem;
+  border: none;
   border-radius: 20px;
+  background: linear-gradient(to right, #f2994a, #f2c94c);
   transition: all 0.5s;
   &:hover{
     letter-spacing: 1px;
@@ -146,7 +197,11 @@ body.dark-mode {
 
 .checkoutBtn{
   width: 6rem;
+  padding: 7px;
+  border: none;
   border-radius:20px;
+  font-weight: bold;
+  background: linear-gradient(to right, #f2994a, #f2c94c);
   transition: all 0.5s;
   &:hover{
     letter-spacing: 1px;
@@ -154,9 +209,13 @@ body.dark-mode {
 }
 
 .upadateBtn{
-  width:5rem;
+  width:6rem;
+  padding: 7px;
+  border: none;
   border-radius:20px; 
   margin-top:1rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #f2994a, #f2c94c);
   transition: all 0.5s;
   &:hover{
     letter-spacing: 1px;
@@ -164,8 +223,12 @@ body.dark-mode {
 }
 
 .placeOrderBtn{
-  width: 8rem; 
+  width: 8rem;
+  padding: 7px; 
+  border: none;
+  font-weight: bold;
   border-radius:20px;
+  background: linear-gradient(to right, #f2994a, #f2c94c);
   transition: all 0.5s;
   &:hover{
     letter-spacing: 1px;

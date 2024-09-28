@@ -116,22 +116,22 @@ export default function Navbar(props) {
                 style={{ backgroundColor: "#9a8100" }}
               >
                 <li>
-                  <a className="dropdown-item" href="/">
+                  <a className="dropdown-item" href="/designerLehengaCholi">
                     Designer Lehenga Choli
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/">
+                  <a className="dropdown-item" href="/bridalLehengaCholi">
                     Bridal Lehenga Choli
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/">
+                  <a className="dropdown-item" href="/weddingLehengaCholi">
                     Wedding Lehenga Choli
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="/">
+                  <a className="dropdown-item" href="/navratriLehengaCholi">
                     Navratri Lehenga Choli
                   </a>
                 </li>

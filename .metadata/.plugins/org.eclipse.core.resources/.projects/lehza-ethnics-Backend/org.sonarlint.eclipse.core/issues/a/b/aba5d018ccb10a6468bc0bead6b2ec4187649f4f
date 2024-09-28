@@ -1,9 +1,11 @@
 
 }
-java:S6813"BRemove this field injection and use constructor injection instead.8èøÌ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
-}
 java:S6813"BRemove this field injection and use constructor injection instead.8é¨†Ë–2b 0132ec8cee01c5dd244e1a60fe6448a1h
+}
+java:S6813"BRemove this field injection and use constructor injection instead.8èøÌ–2b 0132ec8cee01c5dd244e1a60fe6448a1h
 a
 java:S1452)"&Remove usage of generic wildcard type.8ª“²›—2b d1457b72c3fb323a2671125aef3eab5dh
 c
-java:S5411+"(Use a primitive boolean expression here.8ÁÛÊ¡2b dc230f27d081bba36deceaba7c7b4103h
+java:S5411+"(Use a primitive boolean expression here.8Œ”åë¢2b dc230f27d081bba36deceaba7c7b4103h
+c
+java:S5411="(Use a primitive boolean expression here.8Ëñë¢2b 5773c8189e049a8cf8caa06523253bbch

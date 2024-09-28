@@ -55,6 +55,23 @@ public class UserController {
 				
 	}
 	
+	@PostMapping("/verifyUser")
+	public ResponseEntity<String> verifyUser(@RequestBody UsersDto userDto)
+	{	
+		if(userService.checkEmailandUsername(userDto.getEmail(), userDto.getUsername()))
+		{
+			return new ResponseEntity<>("true", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("false", HttpStatus.BAD_REQUEST);
+	}
+	
+	@PostMapping("/resetPassword")
+	public ResponseEntity<String> resetPassword(@RequestBody UsersDto userDto)
+	{
+		String res = userService.resetPassword(userDto.getUsername(), userDto.getPassword());
+		return new ResponseEntity<>(res, HttpStatus.ACCEPTED);
+	}
+	
 	@PutMapping("/updateUser")
 	public UsersDto updateUser(@RequestBody Users user, HttpServletRequest request)
 	{
